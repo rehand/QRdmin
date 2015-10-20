@@ -34,6 +34,13 @@
                     <view key="view" contentMode="scaleToFill" id="BwV-Y6-3V3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Authors: Ivan Antes-Klobucar Reinhard Handler Dominik Hölbling" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Gtr-fW-LUt">
+                                <rect key="frame" x="54" y="221" width="240" height="128"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="more" id="O3n-KB-gpw"/>

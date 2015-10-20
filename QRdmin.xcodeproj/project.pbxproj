@@ -13,6 +13,7 @@
 		200C79591BD67A8F00C4706D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 200C79571BD67A8F00C4706D /* Main.storyboard */; };
 		200C795B1BD67A8F00C4706D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 200C795A1BD67A8F00C4706D /* Assets.xcassets */; };
 		200C795E1BD67A8F00C4706D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 200C795C1BD67A8F00C4706D /* LaunchScreen.storyboard */; };
+		200C79691BD680D700C4706D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200C79681BD680D700C4706D /* MainViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		200C795A1BD67A8F00C4706D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		200C795D1BD67A8F00C4706D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		200C795F1BD67A8F00C4706D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		200C79681BD680D700C4706D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				200C795A1BD67A8F00C4706D /* Assets.xcassets */,
 				200C795C1BD67A8F00C4706D /* LaunchScreen.storyboard */,
 				200C795F1BD67A8F00C4706D /* Info.plist */,
+				200C79681BD680D700C4706D /* MainViewController.swift */,
 			);
 			path = QRdmin;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 				200C79561BD67A8F00C4706D /* SecondViewController.swift in Sources */,
 				200C79521BD67A8F00C4706D /* AppDelegate.swift in Sources */,
 				200C79541BD67A8F00C4706D /* FirstViewController.swift in Sources */,
+				200C79691BD680D700C4706D /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +254,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = QRdmin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = at.fhj.nativemobileapps.QRdmin;
@@ -261,6 +266,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = QRdmin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = at.fhj.nativemobileapps.QRdmin;

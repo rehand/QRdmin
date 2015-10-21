@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="o1I-L9-f5B">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--History-->
@@ -35,13 +36,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Authors: Ivan Antes-Klobucar Reinhard Handler Dominik Hölbling" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Gtr-fW-LUt">
-                                <rect key="frame" x="54" y="221" width="240" height="128"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Authors: Ivan Antes-Klobucar Reinhard Handler Dominik Hölbling" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Gtr-fW-LUt">
+                                <rect key="frame" x="30" y="74" width="264" height="275"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Gtr-fW-LUt" firstAttribute="leading" secondItem="BwV-Y6-3V3" secondAttribute="leadingMargin" constant="10" id="GKd-dn-LmW"/>
+                            <constraint firstItem="Gtr-fW-LUt" firstAttribute="top" secondItem="QJB-oh-qwV" secondAttribute="bottom" constant="10" id="lnN-nr-rlN"/>
+                            <constraint firstItem="1Kn-LA-Ejp" firstAttribute="top" secondItem="Gtr-fW-LUt" secondAttribute="bottom" constant="338" id="pHR-g7-DXv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Gtr-fW-LUt" secondAttribute="trailing" constant="100" id="sLH-b4-79Y"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="more" id="O3n-KB-gpw"/>
                 </viewController>

@@ -14,6 +14,8 @@
 		200C795B1BD67A8F00C4706D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 200C795A1BD67A8F00C4706D /* Assets.xcassets */; };
 		200C795E1BD67A8F00C4706D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 200C795C1BD67A8F00C4706D /* LaunchScreen.storyboard */; };
 		200C79691BD680D700C4706D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200C79681BD680D700C4706D /* MainViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		20268B7A1BD7946F00AC21EF /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20268B781BD7946F00AC21EF /* DataModel.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
+		20268B7C1BD7957C00AC21EF /* DeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20268B7B1BD7957C00AC21EF /* DeviceRepository.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		200C795D1BD67A8F00C4706D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		200C795F1BD67A8F00C4706D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		200C79681BD680D700C4706D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		20268B791BD7946F00AC21EF /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		20268B7B1BD7957C00AC21EF /* DeviceRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,10 +66,12 @@
 				200C79531BD67A8F00C4706D /* FirstViewController.swift */,
 				200C79551BD67A8F00C4706D /* SecondViewController.swift */,
 				200C79571BD67A8F00C4706D /* Main.storyboard */,
+				20268B781BD7946F00AC21EF /* DataModel.xcdatamodeld */,
 				200C795A1BD67A8F00C4706D /* Assets.xcassets */,
 				200C795C1BD67A8F00C4706D /* LaunchScreen.storyboard */,
 				200C795F1BD67A8F00C4706D /* Info.plist */,
 				200C79681BD680D700C4706D /* MainViewController.swift */,
+				20268B7B1BD7957C00AC21EF /* DeviceRepository.swift */,
 			);
 			path = QRdmin;
 			sourceTree = "<group>";
@@ -141,9 +147,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				200C79561BD67A8F00C4706D /* SecondViewController.swift in Sources */,
+				20268B7A1BD7946F00AC21EF /* DataModel.xcdatamodeld in Sources */,
 				200C79521BD67A8F00C4706D /* AppDelegate.swift in Sources */,
 				200C79541BD67A8F00C4706D /* FirstViewController.swift in Sources */,
 				200C79691BD680D700C4706D /* MainViewController.swift in Sources */,
+				20268B7C1BD7957C00AC21EF /* DeviceRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,8 +301,22 @@
 				200C79641BD67A8F00C4706D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		20268B781BD7946F00AC21EF /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				20268B791BD7946F00AC21EF /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 20268B791BD7946F00AC21EF /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 200C79461BD67A8E00C4706D /* Project object */;
 }

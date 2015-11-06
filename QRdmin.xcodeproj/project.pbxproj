@@ -14,6 +14,7 @@
 		200C795B1BD67A8F00C4706D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 200C795A1BD67A8F00C4706D /* Assets.xcassets */; };
 		200C795E1BD67A8F00C4706D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 200C795C1BD67A8F00C4706D /* LaunchScreen.storyboard */; };
 		200C79691BD680D700C4706D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200C79681BD680D700C4706D /* MainViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		2020E7B51BED0EFF004FCD3F /* CreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2020E7B41BED0EFF004FCD3F /* CreationViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		20268B7A1BD7946F00AC21EF /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20268B781BD7946F00AC21EF /* DataModel.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
 		20268B7C1BD7957C00AC21EF /* DeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20268B7B1BD7957C00AC21EF /* DeviceRepository.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -28,6 +29,7 @@
 		200C795D1BD67A8F00C4706D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		200C795F1BD67A8F00C4706D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		200C79681BD680D700C4706D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		2020E7B41BED0EFF004FCD3F /* CreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreationViewController.swift; sourceTree = "<group>"; };
 		20268B791BD7946F00AC21EF /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		20268B7B1BD7957C00AC21EF /* DeviceRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,6 +74,7 @@
 				200C795F1BD67A8F00C4706D /* Info.plist */,
 				200C79681BD680D700C4706D /* MainViewController.swift */,
 				20268B7B1BD7957C00AC21EF /* DeviceRepository.swift */,
+				2020E7B41BED0EFF004FCD3F /* CreationViewController.swift */,
 			);
 			path = QRdmin;
 			sourceTree = "<group>";
@@ -107,6 +110,7 @@
 				TargetAttributes = {
 					200C794D1BD67A8F00C4706D = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = N4U7DRKE88;
 					};
 				};
 			};
@@ -152,6 +156,7 @@
 				200C79541BD67A8F00C4706D /* FirstViewController.swift in Sources */,
 				200C79691BD680D700C4706D /* MainViewController.swift in Sources */,
 				20268B7C1BD7957C00AC21EF /* DeviceRepository.swift in Sources */,
+				2020E7B51BED0EFF004FCD3F /* CreationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,10 +268,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = QRdmin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = at.fhj.nativemobileapps.QRdmin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -275,10 +282,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = QRdmin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = at.fhj.nativemobileapps.QRdmin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

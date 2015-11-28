@@ -9,7 +9,7 @@
         <!--History-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController title="History" id="9pv-A4-QxB" customClass="FirstViewController" customModule="QRdmin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="History" id="9pv-A4-QxB" customClass="HistoryViewController" customModule="QRdmin" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -57,10 +57,10 @@
             </objects>
             <point key="canvasLocation" x="1340" y="1205"/>
         </scene>
-        <!--Second View Controller-->
+        <!--Favorite View Controller-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="QRdmin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" customClass="FavoriteViewController" customModule="QRdmin" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>

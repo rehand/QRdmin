@@ -12,7 +12,18 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let client = DeviceServerClient()
+        var request = NSMutableURLRequest(URL: NSURL(string: "http://store.steampowered.com/api/appdetails?appids=70")!)
+        client.httpGet(request){
+            (data, error) -> Void in
+            if error != nil {
+                print(error)
+            } else {
+                print(data)
+            }
+        }
+        
         // Do any additional setup after loading the view.
     }
 

@@ -32,4 +32,28 @@ class DeviceServerClient {
         task.resume()
     }
     
+    func save(id: NSString, data: NSDictionary, callback: (String?) -> Void) {
+        let session = NSURLSession.sharedSession()
+        
+        let request = NSMutableURLRequest(URL: NSURL(string:"http://192.168.0.42:3333/insert/\(id)")!)
+        request.HTTPMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-type")
+        
+        do {
+            try request.HTTPBody = NSJSONSerialization.dataWithJSONObject(data, options: NSJSONWritingOptions.init(rawValue: 0))
+        } catch {
+            print("Error parsing json")
+        }
+        
+        let task = session.dataTaskWithRequest(request) {
+            (data, response, error) -> Void in
+            if error != nil {
+                callback(error?.localizedDescription)
+            } else {
+                callback("OK")
+            }
+        }
+        task.resume()
+    }
+    
 }

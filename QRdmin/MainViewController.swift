@@ -15,14 +15,20 @@ class MainViewController: UIViewController {
         
         let client = DeviceServerClient()
         
-        client.retrieve("1"){
+        /*client.retrieve("1"){
             (data, error) -> Void in
             if error != nil {
                 print(error)
             } else {
                 print(data)
             }
-        }
+        }*/
+        
+        /*let params = ["test":2] as Dictionary<String, AnyObject>
+        client.save("33", data: params) {
+            (error) -> Void in
+            print(error)
+        }*/
     }
 
     override func didReceiveMemoryWarning() {

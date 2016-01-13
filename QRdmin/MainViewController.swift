@@ -14,8 +14,8 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         let client = DeviceServerClient()
-        var request = NSMutableURLRequest(URL: NSURL(string: "http://store.steampowered.com/api/appdetails?appids=70")!)
-        client.httpGet(request){
+        
+        client.retrieve("1"){
             (data, error) -> Void in
             if error != nil {
                 print(error)
@@ -23,8 +23,6 @@ class MainViewController: UIViewController {
                 print(data)
             }
         }
-        
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

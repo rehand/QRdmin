@@ -9,16 +9,24 @@
 import Foundation
 
 class DeviceServerClient {
-   
-    func httpGet(request: NSURLRequest!, callback: (String, String?) -> Void) {
-        var session = NSURLSession.sharedSession()
-        var task = session.dataTaskWithRequest(request) {
+    
+    func retrieve(id: NSString, callback: (NSDictionary, String?) -> Void){
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(NSMutableURLRequest(URL: NSURL(string: "http://192.168.0.42:3333/select/\(id)")!)) {
             (data, response, error) -> Void in
             if error != nil {
-                callback("", error?.localizedDescription)
+                callback(NSDictionary(), error?.localizedDescription)
             } else {
-                var result = NSString(data: data!, encoding: NSASCIIStringEncoding)!
-                callback(result as String, nil)
+                let anyObj: AnyObject?
+                
+                do {
+                    anyObj = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(rawValue: 0))
+                } catch {
+                    print("Error occurred during json parse")
+                    anyObj = nil
+                }
+
+                callback((anyObj as? NSDictionary)!, nil)
             }
         }
         task.resume()

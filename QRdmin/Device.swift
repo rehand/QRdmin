@@ -8,16 +8,38 @@
 
 import Foundation
 
-class Device {
+class Device : NSObject {
     let id: String
     let name: String
     let ip: String
-    let description: String
+    let notes: String
     
-    init(id: String, name: String, ip: String, description: String) {
+    init(id: String, name: String, ip: String, notes: String) {
         self.id = id
         self.name = name
         self.ip = ip
-        self.description = description
+        self.notes = notes
+    }
+    
+    init(dict: NSDictionary) {
+        self.id = dict.objectForKey("id") as! String
+        self.name = dict.objectForKey("name") as! String
+        self.ip = dict.objectForKey("ip") as! String
+        self.notes = dict.objectForKey("notes") as! String
+    }
+    
+    func toDictionary() -> NSDictionary {
+        var dict = [String: String]()
+        
+        dict["id"] = id
+        dict["name"] = name
+        dict["ip"] = ip
+        dict["notes"] = notes
+        
+        return NSDictionary(dictionary: dict)
+    }
+
+    override  var description: String {
+        return "Device: " + self.toDictionary().description
     }
 }

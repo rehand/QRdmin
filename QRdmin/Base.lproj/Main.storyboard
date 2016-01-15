@@ -38,8 +38,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Authors: Ivan Antes-Klobucar Reinhard Handler Dominik Hölbling" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Gtr-fW-LUt">
-                                <rect key="frame" x="30" y="74" width="264" height="275"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="Authors: Ivan Antes-Klobucar Reinhard Handler Dominik Hölbling" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Gtr-fW-LUt">
+                                <rect key="frame" x="0.0" y="64" width="151" height="322"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -48,10 +48,8 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Gtr-fW-LUt" firstAttribute="leading" secondItem="BwV-Y6-3V3" secondAttribute="leadingMargin" constant="10" id="GKd-dn-LmW"/>
-                            <constraint firstItem="Gtr-fW-LUt" firstAttribute="top" secondItem="QJB-oh-qwV" secondAttribute="bottom" constant="10" id="lnN-nr-rlN"/>
-                            <constraint firstItem="1Kn-LA-Ejp" firstAttribute="top" secondItem="Gtr-fW-LUt" secondAttribute="bottom" constant="338" id="pHR-g7-DXv"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Gtr-fW-LUt" secondAttribute="trailing" constant="100" id="sLH-b4-79Y"/>
+                            <constraint firstItem="Gtr-fW-LUt" firstAttribute="top" secondItem="QJB-oh-qwV" secondAttribute="bottom" constant="10" id="T9r-u9-gcw"/>
+                            <constraint firstItem="Gtr-fW-LUt" firstAttribute="leading" secondItem="BwV-Y6-3V3" secondAttribute="leadingMargin" constant="10" id="upr-sc-pwa"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="more" id="O3n-KB-gpw"/>

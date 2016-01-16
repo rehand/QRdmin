@@ -10,12 +10,12 @@ import Foundation
 
 class DeviceServerClient {
     
-    func retrieve(id: NSString, callback: (Device?, String?) -> Void){
+    func retrieve(id: NSString, callback: (Device, String?) -> Void){
         let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithRequest(NSMutableURLRequest(URL: NSURL(string: "http://192.168.0.42:3333/select/\(id)")!)) {
+        let task = session.dataTaskWithRequest(NSMutableURLRequest(URL: NSURL(string: "http://192.168.0.42:3333/device/\(id)")!)) {
             (data, response, error) -> Void in
             if error != nil {
-                callback(nil, error?.localizedDescription)
+                callback(Device(dict: NSDictionary()), error?.localizedDescription)
             } else {
                 let anyObj: AnyObject?
                 
@@ -26,7 +26,7 @@ class DeviceServerClient {
                     anyObj = nil
                 }
 
-                callback(Device(dict: (anyObj as! NSDictionary)), nil)
+                callback(Device(dict: (anyObj)! as! NSDictionary), nil)
             }
         }
         task.resume()
@@ -35,8 +35,8 @@ class DeviceServerClient {
     func save(device: Device, callback: (String?) -> Void) {
         let session = NSURLSession.sharedSession()
         
-        let request = NSMutableURLRequest(URL: NSURL(string:"http://192.168.0.42:3333/insert/\(device.id)")!)
-        request.HTTPMethod = "POST"
+        let request = NSMutableURLRequest(URL: NSURL(string:"http://192.168.0.42:3333/device/\(device.id)")!)
+        request.HTTPMethod = "PUT"
         request.addValue("application/json", forHTTPHeaderField: "Content-type")
         
         do {

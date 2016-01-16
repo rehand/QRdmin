@@ -15,7 +15,7 @@ class MainViewController: UIViewController {
         
         let client = DeviceServerClient()
         
-        /*client.retrieve("1"){
+        /*client.retrieve("123"){
             (data, error) -> Void in
             if error != nil {
                 print(error)
@@ -24,8 +24,7 @@ class MainViewController: UIViewController {
             }
         }*/
         
-        /*let params = ["test":2] as Dictionary<String, AnyObject>
-        client.save("33", data: params) {
+        /*client.save(Device(id: "123", name: "My Device", ip: "192.168.0.1", notes: "It's awesome")) {
             (error) -> Void in
             print(error)
         }*/

@@ -8,7 +8,7 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.post('/insert/:id', function (request, response) {
+app.put('/device/:id', function (request, response) {
     db.serialize(function () {
         var stmt = db.prepare("INSERT INTO devices VALUES (?,?)");
         stmt.run([request.params.id, JSON.stringify(request.body)]);
@@ -23,11 +23,14 @@ app.post('/insert/:id', function (request, response) {
     });
 });
 
-app.get('/select/:id', function (request, response) {
-    db.serialize(function () {
-        db.each("SELECT value FROM devices where id = " + request.params.id, function (err, row) {
+app.get('/device/:id', function (request, response) {
+    db.get("SELECT value FROM devices where id = " + request.params.id, function (err, row) {
+        if (row) {
             response.send(row.value);
-        });
+        } else {
+            response.status(404);
+            response.send();
+        }
     });
 });
 

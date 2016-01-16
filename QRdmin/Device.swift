@@ -10,9 +10,9 @@ import Foundation
 
 class Device : NSObject {
     let id: String
-    let name: String
-    let ip: String
-    let notes: String
+    var name: String
+    var ip: String
+    var notes: String
     
     init(id: String, name: String, ip: String, notes: String) {
         self.id = id

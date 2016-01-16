@@ -20,6 +20,7 @@
 		208D079D1C09D9AF004A93E5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208D079C1C09D9AF004A93E5 /* DetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		9C0317DF1C44451D005094B7 /* DeviceServerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0317DE1C44451D005094B7 /* DeviceServerClient.swift */; settings = {ASSET_TAGS = (); }; };
 		B70699AA1C4938A80007B23C /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70699A91C4938A80007B23C /* Device.swift */; settings = {ASSET_TAGS = (); }; };
+		B70699AC1C4A6D050007B23C /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70699AB1C4A6D050007B23C /* EditViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		208D079C1C09D9AF004A93E5 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9C0317DE1C44451D005094B7 /* DeviceServerClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceServerClient.swift; sourceTree = "<group>"; };
 		B70699A91C4938A80007B23C /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		B70699AB1C4A6D050007B23C /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				208D079A1C09D7E8004A93E5 /* HistoryViewController.swift */,
 				208D079C1C09D9AF004A93E5 /* DetailViewController.swift */,
 				B70699A91C4938A80007B23C /* Device.swift */,
+				B70699AB1C4A6D050007B23C /* EditViewController.swift */,
 			);
 			path = QRdmin;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 				208D07991C09D788004A93E5 /* FavoriteViewController.swift in Sources */,
 				2020E7B51BED0EFF004FCD3F /* CreationViewController.swift in Sources */,
 				208D079D1C09D9AF004A93E5 /* DetailViewController.swift in Sources */,
+				B70699AC1C4A6D050007B23C /* EditViewController.swift in Sources */,
 				B70699AA1C4938A80007B23C /* Device.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

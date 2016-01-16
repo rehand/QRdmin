@@ -24,14 +24,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        textFieldName.enabled = false
-        textFieldName.text = device?.name
-        
-        textFieldIpAddress.enabled = false
-        textFieldIpAddress.text = device?.ip
-        
-        textViewNotes.editable = false
-        textViewNotes.text = device?.notes
+        initView()
         
         if url != nil {
             NSLog("URL: \(url?.host)")
@@ -44,6 +37,29 @@ class DetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "editDeviceSegue" {
+            let editViewController = segue.destinationViewController as! EditViewController
+            editViewController.device = device
+        }
+    }
     
+    @IBAction func unwindFromEditViewController(segue: UIStoryboardSegue){
+        self.device = (segue.sourceViewController as! EditViewController).device
+        NSLog("unwindFromEditViewController")
+        
+        initView()
+    }
+    
+    func initView() {
+        textFieldName.enabled = false
+        textFieldName.text = device?.name
+        
+        textFieldIpAddress.enabled = false
+        textFieldIpAddress.text = device?.ip
+        
+        textViewNotes.editable = false
+        textViewNotes.text = device?.notes
+    }
     
 }

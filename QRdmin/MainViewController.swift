@@ -36,18 +36,11 @@ class MainViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    
-    
-    
+        if segue.identifier == "tmpShowDetailViewSegue" {
+            let detailViewController = segue.destinationViewController as! DetailViewController
+            
+            detailViewController.device = Device(id: "test", name: "DeviceName/Title", ip: "127.0.0.1", notes: "this is the notes section. Here you are able to add a description, add changes, etc. You can also use it as an history of done changes.")
+        }
+    } 
 }

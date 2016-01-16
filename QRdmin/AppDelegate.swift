@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let mainStoryboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let detailViewController : DetailViewController = mainStoryboard.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
         detailViewController.url = url
+        detailViewController.device = Device(id: "test", name: "name", ip: "ip", notes: "notes")
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window?.rootViewController = detailViewController

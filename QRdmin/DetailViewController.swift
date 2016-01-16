@@ -12,14 +12,29 @@ class DetailViewController: UIViewController {
     
     var url : NSURL? = nil
     
-    @IBOutlet weak var idLabel: UILabel!
+    var device : Device?
+    
+    
+    @IBOutlet weak var textFieldName: UITextField!
+    @IBOutlet weak var textFieldIpAddress: UITextField!
+    @IBOutlet weak var textViewNotes: UITextView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        textFieldName.enabled = false
+        textFieldName.text = device?.name
+        
+        textFieldIpAddress.enabled = false
+        textFieldIpAddress.text = device?.ip
+        
+        textViewNotes.editable = false
+        textViewNotes.text = device?.notes
+        
         if url != nil {
-            idLabel.text = url?.host
+            NSLog("URL: \(url?.host)")
         }
         
     }

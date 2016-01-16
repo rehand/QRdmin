@@ -10,12 +10,12 @@ import Foundation
 
 class DeviceServerClient {
     
-    func retrieve(id: NSString, callback: (NSDictionary, String?) -> Void){
+    func retrieve(id: NSString, callback: (Device, String?) -> Void){
         let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithRequest(NSMutableURLRequest(URL: NSURL(string: "http://192.168.0.42:3333/select/\(id)")!)) {
+        let task = session.dataTaskWithRequest(NSMutableURLRequest(URL: NSURL(string: "http://192.168.0.42:3333/device/\(id)")!)) {
             (data, response, error) -> Void in
             if error != nil {
-                callback(NSDictionary(), error?.localizedDescription)
+                callback(Device(dict: NSDictionary()), error?.localizedDescription)
             } else {
                 let anyObj: AnyObject?
                 
@@ -26,21 +26,21 @@ class DeviceServerClient {
                     anyObj = nil
                 }
 
-                callback((anyObj as? NSDictionary)!, nil)
+                callback(Device(dict: (anyObj)! as! NSDictionary), nil)
             }
         }
         task.resume()
     }
     
-    func save(id: NSString, data: NSDictionary, callback: (String?) -> Void) {
+    func save(device: Device, callback: (String?) -> Void) {
         let session = NSURLSession.sharedSession()
         
-        let request = NSMutableURLRequest(URL: NSURL(string:"http://192.168.0.42:3333/insert/\(id)")!)
-        request.HTTPMethod = "POST"
+        let request = NSMutableURLRequest(URL: NSURL(string:"http://192.168.0.42:3333/device/\(device.id)")!)
+        request.HTTPMethod = "PUT"
         request.addValue("application/json", forHTTPHeaderField: "Content-type")
         
         do {
-            try request.HTTPBody = NSJSONSerialization.dataWithJSONObject(data, options: NSJSONWritingOptions.init(rawValue: 0))
+            try request.HTTPBody = NSJSONSerialization.dataWithJSONObject(device.toDictionary(), options: NSJSONWritingOptions.init(rawValue: 0))
         } catch {
             print("Error parsing json")
         }

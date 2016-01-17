@@ -12,52 +12,49 @@ import CoreData
 
 class DeviceRepository {
     let ENTITY_NAME_DEVICE = "Device"
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
-    let appDelegate =
-    UIApplication.sharedApplication().delegate as! AppDelegate
-    
-    func saveDevice(deviceAsJSON: String) {
+    func saveDevice(device: Device, isFavorite: Bool?) {
         let managedContext = appDelegate.managedObjectContext
-        
-        //2
         let entity =  NSEntityDescription.entityForName(ENTITY_NAME_DEVICE,
             inManagedObjectContext:managedContext)
         
-        let person = NSManagedObject(entity: entity!,
-            insertIntoManagedObjectContext: managedContext)
+        let deviceEntity = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        deviceEntity.setValue(device.id, forKey: "id")
+        if((isFavorite) != nil){
+            deviceEntity.setValue(true, forKey: "isFavorite")
+        }
         
-        // TODO: parse JSON
-        
-        //3
-        //person.setValue(name, forKey: "name")
-        
-        //4
         do {
             try managedContext.save()
-            //5
-            //people.append(person)
         } catch let error as NSError  {
             print("Could not save \(error), \(error.userInfo)")
         }
     }
     
-    func getFavoriteDevices() {
+    func getFavoriteDevices() -> [String] {
         let managedContext = appDelegate.managedObjectContext
-        
-        //2
+
         let fetchRequest = NSFetchRequest(entityName: ENTITY_NAME_DEVICE)
         
         let predicate = NSPredicate(format: "isFavorite IS true")
             
             fetchRequest.predicate = predicate
-        
-        //3
+
         do {
-            let results =
-            try managedContext.executeFetchRequest(fetchRequest)
-            //people = results as! [NSManagedObject]
+            let results = try managedContext.executeFetchRequest(fetchRequest)
+            let managedResults = results as! [NSManagedObject]
+            
+            var resultList = [String]()
+            for res: NSManagedObject in managedResults {
+                resultList.append(String(res.valueForKey("id")))
+            }
+            
+            return resultList
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
+            return [String]()
         }
+        
     }
 }

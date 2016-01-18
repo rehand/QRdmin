@@ -111,7 +111,11 @@ class MainViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
             qrCodeFrameView?.frame = barCodeObject.bounds;
             
             if metadataObj.stringValue != nil {
-                print(metadataObj.stringValue)
+                if(metadataObj.stringValue.rangeOfString("qrdmin://") != nil)
+                {
+                    print(metadataObj.stringValue)
+                    //TODO: further process deviceID
+                }
             }
         }
     }

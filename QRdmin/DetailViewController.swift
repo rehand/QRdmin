@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class DetailViewController: UIViewController {
     
@@ -25,6 +26,7 @@ class DetailViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         initView()
+        saveToHistory()
         
         if url != nil {
             NSLog("URL: \(url?.host)")
@@ -60,6 +62,11 @@ class DetailViewController: UIViewController {
         
         textViewNotes.editable = false
         textViewNotes.text = device?.notes
+    }
+    
+    func saveToHistory() {
+        let repository = DeviceRepository()
+        repository.saveDevice(device!, isFavorite: false)
     }
     
 }

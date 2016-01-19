@@ -12,27 +12,30 @@ import CoreData
 
 class DeviceRepository {
     let ENTITY_NAME_DEVICE = "Device"
-    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     func saveDevice(device: Device, isFavorite: Bool?) {
-        let managedContext = appDelegate.managedObjectContext
-        let entity =  NSEntityDescription.entityForName(ENTITY_NAME_DEVICE,
-            inManagedObjectContext:managedContext)
+        let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
         
-        let deviceEntity = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        let entity =  NSEntityDescription.entityForName("Device",
+            inManagedObjectContext:managedObjectContext)
+        
+        let deviceEntity = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedObjectContext)
         deviceEntity.setValue(device.id, forKey: "id")
         if((isFavorite) != nil){
             deviceEntity.setValue(true, forKey: "isFavorite")
         }
         
         do {
-            try managedContext.save()
+            try managedObjectContext.save()
         } catch let error as NSError  {
             print("Could not save \(error), \(error.userInfo)")
         }
     }
     
+    
     func getFavoriteDevices() -> [String] {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+
         let managedContext = appDelegate.managedObjectContext
 
         let fetchRequest = NSFetchRequest(entityName: ENTITY_NAME_DEVICE)

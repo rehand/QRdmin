@@ -12,15 +12,15 @@ import CoreData
 
 class DeviceRepository {
     let ENTITY_NAME_DEVICE = "Device"
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     func saveDevice(device: Device, isFavorite: Bool?) {
-        let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-        
-        let entity =  NSEntityDescription.entityForName("Device",
+        let entity =  NSEntityDescription.entityForName(ENTITY_NAME_DEVICE,
             inManagedObjectContext:managedObjectContext)
         
         let deviceEntity = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedObjectContext)
         deviceEntity.setValue(device.id, forKey: "id")
+        deviceEntity.setValue(NSDate(), forKey: "lastScanned")
         if((isFavorite) != nil){
             deviceEntity.setValue(true, forKey: "isFavorite")
         }
@@ -29,6 +29,27 @@ class DeviceRepository {
             try managedObjectContext.save()
         } catch let error as NSError  {
             print("Could not save \(error), \(error.userInfo)")
+        }
+    }
+    
+    func retrieveAllSavedDevices() -> [String]{
+        let fetchRequest = NSFetchRequest(entityName: ENTITY_NAME_DEVICE)
+        
+        do {
+            let results = try managedObjectContext.executeFetchRequest(fetchRequest)
+            let managedResults = results as! [NSManagedObject]
+            
+            var resultList = [String]()
+            for res: NSManagedObject in managedResults {
+                let id = res.valueForKey("id")
+                let scanned = res.valueForKey("lastScanned")
+                resultList.append("\(id!), \(scanned!)")
+            }
+            
+            return resultList
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+            return [String]()
         }
     }
     

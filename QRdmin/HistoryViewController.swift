@@ -8,11 +8,25 @@
 
 import UIKit
 
-class HistoryViewController: UIViewController {
+class HistoryViewController: UIViewController, UITableViewDataSource {
+    
+    @IBOutlet weak var tableOutlet: UITableView!
+    
+    var devicesToDisplay = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "The List"
+        
+        let allDevices = DeviceRepository().retrieveAllSavedDevices()
+        for singleDevice: String in allDevices {
+            devicesToDisplay.append(singleDevice)
+        }
+        
+        tableOutlet.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         // Do any additional setup after loading the view, typically from a nib.
+        
+        self.tableOutlet.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -20,6 +34,16 @@ class HistoryViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return devicesToDisplay.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell")
+        cell!.textLabel!.text = devicesToDisplay[indexPath.row]
+        
+        return cell!
+    }
     
 }
 

@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class MainViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+class MainViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, SimplePingDelegate {
 
     //Local variables for QR Reader
     var captureSession:AVCaptureSession?
@@ -82,8 +82,14 @@ class MainViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
         
         // Temporary add test device to Spotlight Index
         DeviceRepository().addDeviceToSearchIndex(Device(id: "1234", name: "Test Device", ip: "127.0.0.1", notes: "Here it is"))
+        
+        // Test Ping...
+        Ping(hostNameOrIpAddress: "www.fh-joanneum.at") {
+            (success) -> Void in
+                NSLog("Ping success: " + success.description)
+        }
     }
-
+        
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

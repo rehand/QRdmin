@@ -21,6 +21,8 @@
 		9C53134A1C4EA6AC00156DE9 /* QRdmin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9C5313481C4EA6AC00156DE9 /* QRdmin.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
 		B70699AA1C4938A80007B23C /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70699A91C4938A80007B23C /* Device.swift */; };
 		B70699AC1C4A6D050007B23C /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70699AB1C4A6D050007B23C /* EditViewController.swift */; };
+		B7C5D4B31C53E926001AFF03 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C5D4B21C53E926001AFF03 /* SimplePing.m */; settings = {ASSET_TAGS = (); }; };
+		B7C5D4B51C53F3EE001AFF03 /* Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C5D4B41C53F3EE001AFF03 /* Ping.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,10 @@
 		9C5313491C4EA6AC00156DE9 /* QRdmin.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QRdmin.xcdatamodel; sourceTree = "<group>"; };
 		B70699A91C4938A80007B23C /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		B70699AB1C4A6D050007B23C /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		B7C5D4AD1C53E69D001AFF03 /* QRdmin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QRdmin-Bridging-Header.h"; sourceTree = "<group>"; };
+		B7C5D4B11C53E925001AFF03 /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
+		B7C5D4B21C53E926001AFF03 /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
+		B7C5D4B41C53F3EE001AFF03 /* Ping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ping.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +93,10 @@
 				208D079C1C09D9AF004A93E5 /* DetailViewController.swift */,
 				B70699A91C4938A80007B23C /* Device.swift */,
 				B70699AB1C4A6D050007B23C /* EditViewController.swift */,
+				B7C5D4B11C53E925001AFF03 /* SimplePing.h */,
+				B7C5D4B21C53E926001AFF03 /* SimplePing.m */,
+				B7C5D4AD1C53E69D001AFF03 /* QRdmin-Bridging-Header.h */,
+				B7C5D4B41C53F3EE001AFF03 /* Ping.swift */,
 			);
 			path = QRdmin;
 			sourceTree = "<group>";
@@ -117,6 +127,7 @@
 		200C79461BD67A8E00C4706D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "FH Joanneum";
 				TargetAttributes = {
@@ -164,6 +175,7 @@
 			files = (
 				200C79521BD67A8F00C4706D /* AppDelegate.swift in Sources */,
 				200C79691BD680D700C4706D /* MainViewController.swift in Sources */,
+				B7C5D4B51C53F3EE001AFF03 /* Ping.swift in Sources */,
 				20268B7C1BD7957C00AC21EF /* DeviceRepository.swift in Sources */,
 				208D079B1C09D7E8004A93E5 /* HistoryViewController.swift in Sources */,
 				9C0317DF1C44451D005094B7 /* DeviceServerClient.swift in Sources */,
@@ -172,6 +184,7 @@
 				208D079D1C09D9AF004A93E5 /* DetailViewController.swift in Sources */,
 				B70699AC1C4A6D050007B23C /* EditViewController.swift in Sources */,
 				9C53134A1C4EA6AC00156DE9 /* QRdmin.xcdatamodeld in Sources */,
+				B7C5D4B31C53E926001AFF03 /* SimplePing.m in Sources */,
 				B70699AA1C4938A80007B23C /* Device.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +296,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = QRdmin/Info.plist;
@@ -290,6 +304,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = at.fhj.nativemobileapps.QRdmin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "QRdmin/QRdmin-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -297,6 +313,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = QRdmin/Info.plist;
@@ -304,6 +321,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = at.fhj.nativemobileapps.QRdmin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "QRdmin/QRdmin-Bridging-Header.h";
 			};
 			name = Release;
 		};

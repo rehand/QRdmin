@@ -43,41 +43,45 @@ class MainViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
         var input : AVCaptureInput
         do {
             input = try AVCaptureDeviceInput(device: captureDevice) as AVCaptureDeviceInput
+            
+            // Initialize the captureSession object.
+            captureSession = AVCaptureSession()
+            // Set the input device on the capture session.
+            captureSession?.addInput(input)
+            
+            // Initialize a AVCaptureMetadataOutput object and set it as the output device to the capture session.
+            let captureMetadataOutput = AVCaptureMetadataOutput()
+            captureSession?.addOutput(captureMetadataOutput)
+            
+            // Set delegate and use the default dispatch queue to execute the call back
+            captureMetadataOutput.setMetadataObjectsDelegate(self, queue: dispatch_get_main_queue())
+            captureMetadataOutput.metadataObjectTypes = [AVMetadataObjectTypeQRCode]
+            
+            // Initialize the video preview layer and add it as a sublayer to the viewPreview view's layer.
+            videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+            videoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
+            videoPreviewLayer?.frame = view.layer.bounds
+            view.layer.addSublayer((videoPreviewLayer)!)
+            
+            // Start video capture.
+            captureSession?.startRunning()
+            
+            // Initialize QR Code Frame to highlight the QR code
+            qrCodeFrameView = UIView()
+            qrCodeFrameView?.layer.borderColor = UIColor.greenColor().CGColor
+            qrCodeFrameView?.layer.borderWidth = 2
+            view.addSubview(qrCodeFrameView!)
+            view.bringSubviewToFront(qrCodeFrameView!)
         }
         catch let error as NSError {
             // If any error occurs, simply log the description of it and don't continue any more.
             print("\(error.localizedDescription)")
-            return
         }
         
-        // Initialize the captureSession object.
-        captureSession = AVCaptureSession()
-        // Set the input device on the capture session.
-        captureSession?.addInput(input)
+        NSLog("trying to add device to search index")
         
-        // Initialize a AVCaptureMetadataOutput object and set it as the output device to the capture session.
-        let captureMetadataOutput = AVCaptureMetadataOutput()
-        captureSession?.addOutput(captureMetadataOutput)
-        
-        // Set delegate and use the default dispatch queue to execute the call back
-        captureMetadataOutput.setMetadataObjectsDelegate(self, queue: dispatch_get_main_queue())
-        captureMetadataOutput.metadataObjectTypes = [AVMetadataObjectTypeQRCode]
-        
-        // Initialize the video preview layer and add it as a sublayer to the viewPreview view's layer.
-        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        videoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
-        videoPreviewLayer?.frame = view.layer.bounds
-        view.layer.addSublayer((videoPreviewLayer)!)
-        
-        // Start video capture.
-        captureSession?.startRunning()
-        
-        // Initialize QR Code Frame to highlight the QR code
-        qrCodeFrameView = UIView()
-        qrCodeFrameView?.layer.borderColor = UIColor.greenColor().CGColor
-        qrCodeFrameView?.layer.borderWidth = 2
-        view.addSubview(qrCodeFrameView!)
-        view.bringSubviewToFront(qrCodeFrameView!)
+        // Temporary add test device to Spotlight Index
+        DeviceRepository().addDeviceToSearchIndex(Device(id: "1234", name: "Test Device", ip: "127.0.0.1", notes: "Here it is"))
     }
 
     override func didReceiveMemoryWarning() {

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import CoreSpotlight
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,16 +24,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
         NSLog("URL received \(url)")
         
+        callDetailViewWithUrl(url.host!)
+        
+        return true
+    }
+    
+    func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
+        if userActivity.activityType == CSSearchableItemActionType {
+            if let uniqueIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String {
+                
+                NSLog("Deep link: \(uniqueIdentifier)")
+                
+                callDetailViewWithUrl(uniqueIdentifier)
+                
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    func callDetailViewWithUrl(url: String) {
         let mainStoryboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let detailViewController : DetailViewController = mainStoryboard.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
-        detailViewController.url = url
+        
+        // TODO fetch device from server and call create (if no device found) or detail view
+        
         detailViewController.device = Device(id: "test", name: "name", ip: "ip", notes: "notes")
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window?.rootViewController = detailViewController
         self.window?.makeKeyAndVisible()
-        
-        return true
     }
 
     func applicationWillResignActive(application: UIApplication) {

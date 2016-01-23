@@ -11,8 +11,6 @@ import CoreData
 
 class DetailViewController: UIViewController {
     
-    var url : NSURL? = nil
-    
     var device : Device?
     
     
@@ -26,12 +24,7 @@ class DetailViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         initView()
-        saveToHistory()
-        
-        if url != nil {
-            NSLog("URL: \(url?.host)")
-        }
-        
+        saveToHistory()        
     }
     
     override func didReceiveMemoryWarning() {

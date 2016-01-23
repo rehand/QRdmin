@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import CoreData
+import CoreSpotlight
+import MobileCoreServices
 
 class DeviceRepository {
     let ENTITY_NAME_DEVICE = "Device"
@@ -80,5 +82,21 @@ class DeviceRepository {
             return [String]()
         }
         
+    }
+    
+    func addDeviceToSearchIndex(device : Device) {
+        let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeText as String)
+        
+        attributeSet.title = device.name
+        attributeSet.contentDescription = device.notes
+        
+        let item = CSSearchableItem(uniqueIdentifier: device.id, domainIdentifier: "qrdmin", attributeSet: attributeSet)
+        CSSearchableIndex.defaultSearchableIndex().indexSearchableItems([item]) { (error: NSError?) -> Void in
+            if let error = error {
+                NSLog("Indexing error: \(error.localizedDescription)")
+            } else {
+                NSLog("Search item indexed successfully!")
+            }
+        }
     }
 }

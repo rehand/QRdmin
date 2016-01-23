@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class MainViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, SimplePingDelegate {
+class MainViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
     //Local variables for QR Reader
     var captureSession:AVCaptureSession?
@@ -89,7 +89,7 @@ class MainViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
                 NSLog("Ping success: " + success.description)
         }
     }
-        
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

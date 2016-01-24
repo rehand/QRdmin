@@ -24,7 +24,7 @@ app.put('/device/:id', function (request, response) {
 });
 
 app.get('/device/:id', function (request, response) {
-    db.get("SELECT value FROM devices where id = " + request.params.id, function (err, row) {
+    db.get("SELECT value FROM devices where id = '" + request.params.id + "'", function (err, row) {
         if (row) {
             response.send(row.value);
         } else {

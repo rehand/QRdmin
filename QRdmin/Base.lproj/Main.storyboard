@@ -33,6 +33,7 @@
                     <tabBarItem key="tabBarItem" systemItem="history" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="tableOutlet" destination="cfJ-Hc-Jaq" id="8jI-wI-RsN"/>
+                        <segue destination="MBa-HT-IQs" kind="show" identifier="viewDetailDeviceSegue" id="V5J-BS-5Qv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -411,6 +412,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="H81-DJ-gls"/>
+        <segue reference="V5J-BS-5Qv"/>
     </inferredMetricsTieBreakers>
 </document>

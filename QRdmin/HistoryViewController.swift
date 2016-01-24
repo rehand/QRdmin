@@ -49,15 +49,19 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         NSLog(devicesToDisplay[indexPath.row].description)
-        //goToDetailView(devicesToDisplay[indexPath.row])
+        goToDetailView(devicesToDisplay[indexPath.row])
     }
     
     func goToDetailView(device: Device){
-        let destination = DetailViewController()
-        destination.device = device
-        navigationController?.pushViewController(destination, animated: true)
+        self.performSegueWithIdentifier("viewDetailDeviceSegue", sender: device)
     }
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "viewDetailDeviceSegue" {
+            let detailViewController = segue.destinationViewController as! DetailViewController
+            detailViewController.device = sender as? Device
+        }
+    }
     
 }
 

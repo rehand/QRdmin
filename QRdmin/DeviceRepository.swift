@@ -22,6 +22,9 @@ class DeviceRepository {
         
         let deviceEntity = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedObjectContext)
         deviceEntity.setValue(device.id, forKey: "id")
+        deviceEntity.setValue(device.name, forKey: "name")
+        deviceEntity.setValue(device.notes, forKey: "comments")
+        deviceEntity.setValue(device.ip, forKey: "ipAddress")
         deviceEntity.setValue(NSDate(), forKey: "lastScanned")
         if((isFavorite) != nil){
             deviceEntity.setValue(true, forKey: "isFavorite")
@@ -34,24 +37,23 @@ class DeviceRepository {
         }
     }
     
-    func retrieveAllSavedDevices() -> [String]{
+    func retrieveAllSavedDevices() -> [Device]{
         let fetchRequest = NSFetchRequest(entityName: ENTITY_NAME_DEVICE)
         
         do {
             let results = try managedObjectContext.executeFetchRequest(fetchRequest)
             let managedResults = results as! [NSManagedObject]
             
-            var resultList = [String]()
+            var resultList = [Device]()
             for res: NSManagedObject in managedResults {
-                let id = res.valueForKey("id")
-                let scanned = res.valueForKey("lastScanned")
-                resultList.append("\(id!), \(scanned!)")
+                let retrievedDevice = Device(id: res.valueForKey("id") as! String, name: res.valueForKey("name") as! String, ip: res.valueForKey("ipAddress") as! String, notes: res.valueForKey("comments") as! String)
+                resultList.append(retrievedDevice)
             }
             
             return resultList
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
-            return [String]()
+            return [Device]()
         }
     }
     

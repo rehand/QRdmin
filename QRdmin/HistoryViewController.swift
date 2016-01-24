@@ -8,18 +8,20 @@
 
 import UIKit
 
-class HistoryViewController: UIViewController, UITableViewDataSource {
+class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableOutlet: UITableView!
     
-    var devicesToDisplay = [String]()
+    var devicesToDisplay = [Device]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableOutlet.delegate = self
+        
         title = "The List"
         
         let allDevices = DeviceRepository().retrieveAllSavedDevices()
-        for singleDevice: String in allDevices {
+        for singleDevice: Device in allDevices {
             devicesToDisplay.append(singleDevice)
         }
         
@@ -40,10 +42,22 @@ class HistoryViewController: UIViewController, UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell")
-        cell!.textLabel!.text = devicesToDisplay[indexPath.row]
+        cell!.textLabel!.text = devicesToDisplay[indexPath.row].name
         
         return cell!
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        NSLog(devicesToDisplay[indexPath.row].description)
+        //goToDetailView(devicesToDisplay[indexPath.row])
+    }
+    
+    func goToDetailView(device: Device){
+        let destination = DetailViewController()
+        destination.device = device
+        navigationController?.pushViewController(destination, animated: true)
+    }
+
     
 }
 

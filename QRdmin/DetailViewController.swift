@@ -60,11 +60,6 @@ class DetailViewController: UIViewController {
     func saveToHistory() {
         let repository = DeviceRepository()
         repository.saveDevice(device!, isFavorite: false)
-        
-        let devices = repository.retrieveAllSavedDevices()
-        for id: String in devices {
-            NSLog(id)
-        }
     }
     
 }

@@ -156,9 +156,45 @@
             </objects>
             <point key="canvasLocation" x="591" y="405"/>
         </scene>
+        <!--Ping Animation View Controller-->
+        <scene sceneID="O1y-iJ-yq2">
+            <objects>
+                <viewController id="sdW-iw-ljz" customClass="PingAnimationViewController" customModule="QRdmin" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qX9-Si-7M4"/>
+                        <viewControllerLayoutGuide type="bottom" id="1yN-Yf-5P0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oIP-lk-gOB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PMQ-GU-Oey" userLabel="PingAnimationView" customClass="SKView">
+                                <rect key="frame" x="0.0" y="64" width="414" height="628"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PMQ-GU-Oey" firstAttribute="top" secondItem="qX9-Si-7M4" secondAttribute="bottom" id="2Tn-cW-xVM"/>
+                            <constraint firstItem="PMQ-GU-Oey" firstAttribute="leading" secondItem="oIP-lk-gOB" secondAttribute="leadingMargin" constant="-20" id="Qy3-H5-hmu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PMQ-GU-Oey" secondAttribute="trailing" constant="-20" id="dQD-iQ-fUN"/>
+                            <constraint firstItem="1yN-Yf-5P0" firstAttribute="top" secondItem="PMQ-GU-Oey" secondAttribute="bottom" id="mhb-ZC-DLU"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="pingAnimationView" destination="PMQ-GU-Oey" id="aAl-Gy-SOa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a2w-hQ-CUf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-736" y="-1333"/>
+        </scene>
         <!--Detail View Controller-->
         <scene sceneID="K2Y-3x-mgr">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MAT-Ug-ILy" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="DetailViewController" id="MBa-HT-IQs" customClass="DetailViewController" customModule="QRdmin" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VsG-X9-eUU"/>
@@ -217,6 +253,14 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hdd-ST-Z9J">
+                                <rect key="frame" x="110" y="194" width="162" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Test device reachability"/>
+                                <connections>
+                                    <segue destination="sdW-iw-ljz" kind="show" identifier="pingDeviceSegue" id="hdQ-KS-aBb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -231,6 +275,7 @@
                             <constraint firstItem="XMW-3Y-O5r" firstAttribute="top" secondItem="FT1-l9-i6f" secondAttribute="bottom" constant="3" id="SRw-vQ-RBO"/>
                             <constraint firstItem="xTj-kK-SN4" firstAttribute="top" secondItem="XMW-3Y-O5r" secondAttribute="bottom" id="UKT-Ea-aWb"/>
                             <constraint firstItem="XMW-3Y-O5r" firstAttribute="leading" secondItem="vE7-bJ-yVW" secondAttribute="leadingMargin" id="VcT-SP-FmR"/>
+                            <constraint firstItem="Hdd-ST-Z9J" firstAttribute="leading" secondItem="9xZ-rD-Zwq" secondAttribute="trailing" constant="10" id="btF-hY-pes"/>
                             <constraint firstItem="XMW-3Y-O5r" firstAttribute="trailing" secondItem="vE7-bJ-yVW" secondAttribute="trailingMargin" id="dto-BY-ZKD"/>
                             <constraint firstItem="6QP-r9-HOJ" firstAttribute="top" secondItem="VsG-X9-eUU" secondAttribute="bottom" constant="52" id="obC-tC-7hL"/>
                         </constraints>
@@ -250,7 +295,6 @@
                         <outlet property="textViewNotes" destination="XMW-3Y-O5r" id="jod-NE-14Z"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MAT-Ug-ILy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-88" y="-699"/>
         </scene>

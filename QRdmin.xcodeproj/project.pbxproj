@@ -21,6 +21,9 @@
 		9C53134A1C4EA6AC00156DE9 /* QRdmin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9C5313481C4EA6AC00156DE9 /* QRdmin.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
 		B70699AA1C4938A80007B23C /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70699A91C4938A80007B23C /* Device.swift */; };
 		B70699AC1C4A6D050007B23C /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70699AB1C4A6D050007B23C /* EditViewController.swift */; };
+		B7577E041C5CF308005EEBDF /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7577E031C5CF308005EEBDF /* GameScene.swift */; settings = {ASSET_TAGS = (); }; };
+		B79F9C2D1C5CF04000EE700A /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B79F9C2C1C5CF04000EE700A /* GameScene.sks */; settings = {ASSET_TAGS = (); }; };
+		B79F9C2F1C5CF04800EE700A /* PingAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79F9C2E1C5CF04800EE700A /* PingAnimationViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		B7C5D4B31C53E926001AFF03 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C5D4B21C53E926001AFF03 /* SimplePing.m */; settings = {ASSET_TAGS = (); }; };
 		B7C5D4B51C53F3EE001AFF03 /* Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C5D4B41C53F3EE001AFF03 /* Ping.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -42,6 +45,9 @@
 		9C5313491C4EA6AC00156DE9 /* QRdmin.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QRdmin.xcdatamodel; sourceTree = "<group>"; };
 		B70699A91C4938A80007B23C /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		B70699AB1C4A6D050007B23C /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		B7577E031C5CF308005EEBDF /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		B79F9C2C1C5CF04000EE700A /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		B79F9C2E1C5CF04800EE700A /* PingAnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PingAnimationViewController.swift; sourceTree = "<group>"; };
 		B7C5D4AD1C53E69D001AFF03 /* QRdmin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QRdmin-Bridging-Header.h"; sourceTree = "<group>"; };
 		B7C5D4B11C53E925001AFF03 /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
 		B7C5D4B21C53E926001AFF03 /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
@@ -78,6 +84,7 @@
 		200C79501BD67A8F00C4706D /* QRdmin */ = {
 			isa = PBXGroup;
 			children = (
+				B7577E021C5CF21E005EEBDF /* PingAnimation */,
 				9C5313481C4EA6AC00156DE9 /* QRdmin.xcdatamodeld */,
 				200C79511BD67A8F00C4706D /* AppDelegate.swift */,
 				200C79571BD67A8F00C4706D /* Main.storyboard */,
@@ -99,6 +106,16 @@
 				B7C5D4B41C53F3EE001AFF03 /* Ping.swift */,
 			);
 			path = QRdmin;
+			sourceTree = "<group>";
+		};
+		B7577E021C5CF21E005EEBDF /* PingAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				B7577E031C5CF308005EEBDF /* GameScene.swift */,
+				B79F9C2C1C5CF04000EE700A /* GameScene.sks */,
+				B79F9C2E1C5CF04800EE700A /* PingAnimationViewController.swift */,
+			);
+			name = PingAnimation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,6 +177,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B79F9C2D1C5CF04000EE700A /* GameScene.sks in Resources */,
 				200C795E1BD67A8F00C4706D /* LaunchScreen.storyboard in Resources */,
 				200C795B1BD67A8F00C4706D /* Assets.xcassets in Resources */,
 				200C79591BD67A8F00C4706D /* Main.storyboard in Resources */,
@@ -173,6 +191,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7577E041C5CF308005EEBDF /* GameScene.swift in Sources */,
+				B79F9C2F1C5CF04800EE700A /* PingAnimationViewController.swift in Sources */,
 				200C79521BD67A8F00C4706D /* AppDelegate.swift in Sources */,
 				200C79691BD680D700C4706D /* MainViewController.swift in Sources */,
 				B7C5D4B51C53F3EE001AFF03 /* Ping.swift in Sources */,

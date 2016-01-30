@@ -82,12 +82,6 @@ class MainViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
         
         // Temporary add test device to Spotlight Index
         DeviceRepository().addDeviceToSearchIndex(Device(id: "1234", name: "Test Device", ip: "127.0.0.1", notes: "Here it is"))
-        
-        // Test Ping...
-        Ping(hostNameOrIpAddress: "www.fh-joanneum.at") {
-            (success) -> Void in
-                NSLog("Ping success: " + success.description)
-        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -99,7 +93,7 @@ class MainViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
         if segue.identifier == "tmpShowDetailViewSegue" {
             let detailViewController = segue.destinationViewController as! DetailViewController
             
-            detailViewController.device = Device(id: "test", name: "DeviceName/Title", ip: "127.0.0.1", notes: "this is the notes section. Here you are able to add a description, add changes, etc. You can also use it as an history of done changes.")
+            detailViewController.device = Device(id: "test", name: "DeviceName/Title", ip: "8.8.8.8", notes: "this is the notes section. Here you are able to add a description, add changes, etc. You can also use it as an history of done changes.")
         }
     }
     

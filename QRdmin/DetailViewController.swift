@@ -36,6 +36,9 @@ class DetailViewController: UIViewController {
         if segue.identifier == "editDeviceSegue" {
             let editViewController = segue.destinationViewController as! EditViewController
             editViewController.device = device
+        } else if segue.identifier == "pingDeviceSegue" {
+            let pingAnimationViewController = segue.destinationViewController as! PingAnimationViewController
+            pingAnimationViewController.device = device
         }
     }
     

@@ -47,7 +47,13 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 device?.image = nil
             }
             
-            // TODO call to save device on server
+            if (device != nil) {
+                let client = DeviceServerClient()
+                client.save(device!) {
+                    (error) -> Void in
+                    NSLog("Save: " + error!)
+                }
+            }
         }
     }
     

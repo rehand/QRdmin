@@ -13,11 +13,10 @@ class DetailViewController: UIViewController {
     
     var device : Device?
     
-    
     @IBOutlet weak var textFieldName: UITextField!
     @IBOutlet weak var textFieldIpAddress: UITextField!
     @IBOutlet weak var textViewNotes: UITextView!
-    
+    @IBOutlet weak var deviceImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,8 +43,6 @@ class DetailViewController: UIViewController {
     
     @IBAction func unwindFromEditViewController(segue: UIStoryboardSegue){
         self.device = (segue.sourceViewController as! EditViewController).device
-        NSLog("unwindFromEditViewController")
-        
         initView()
     }
     
@@ -58,6 +55,8 @@ class DetailViewController: UIViewController {
         
         textViewNotes.editable = false
         textViewNotes.text = device?.notes
+        
+        deviceImageView.image = device?.getUIImage()
     }
     
     func saveToHistory() {

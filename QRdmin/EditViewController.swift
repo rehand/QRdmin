@@ -42,7 +42,7 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             if deviceImageView.image != nil {
                 //Now use image to create into NSData format
                 let imageData = UIImagePNGRepresentation(deviceImageView.image!)
-                device?.image = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+                device?.image = imageData!.base64EncodedStringWithOptions(.EncodingEndLineWithLineFeed)
             } else {
                 device?.image = nil
             }

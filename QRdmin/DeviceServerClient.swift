@@ -10,9 +10,12 @@ import Foundation
 
 class DeviceServerClient {
     
+    var SERVER_IP = "10.1.0.3"
+    var SERVER_PORT = "3333"
+    
     func retrieve(id: NSString, callback: (Device, String?) -> Void){
         let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithRequest(NSMutableURLRequest(URL: NSURL(string: "http://192.168.0.42:3333/device/\(id)")!)) {
+        let task = session.dataTaskWithRequest(NSMutableURLRequest(URL: NSURL(string: "http://\(SERVER_IP):\(SERVER_PORT)/device/\(id)")!)) {
             (data, response, error) -> Void in
             if error != nil {
                 callback(Device(dict: NSDictionary()), error?.localizedDescription)
@@ -35,7 +38,7 @@ class DeviceServerClient {
     func save(device: Device, callback: (String?) -> Void) {
         let session = NSURLSession.sharedSession()
         
-        let request = NSMutableURLRequest(URL: NSURL(string:"http://192.168.0.42:3333/device/\(device.id)")!)
+        let request = NSMutableURLRequest(URL: NSURL(string:"http://\(SERVER_IP):\(SERVER_PORT)/device/\(device.id)")!)
         request.HTTPMethod = "PUT"
         request.addValue("application/json", forHTTPHeaderField: "Content-type")
         

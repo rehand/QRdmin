@@ -194,7 +194,6 @@
         <!--Detail View Controller-->
         <scene sceneID="K2Y-3x-mgr">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MAT-Ug-ILy" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="DetailViewController" id="MBa-HT-IQs" customClass="DetailViewController" customModule="QRdmin" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VsG-X9-eUU"/>
@@ -295,6 +294,7 @@
                         <outlet property="textViewNotes" destination="XMW-3Y-O5r" id="jod-NE-14Z"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MAT-Ug-ILy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-255" y="1357"/>
         </scene>
@@ -318,7 +318,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ynf-Zp-SPS">
-                                <rect key="frame" x="20" y="423" width="374" height="251"/>
+                                <rect key="frame" x="20" y="388" width="374" height="296"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="sen-TT-39c"/>
@@ -335,7 +335,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HNJ-Ng-Wdz">
-                                <rect key="frame" x="128" y="150" width="170" height="30"/>
+                                <rect key="frame" x="128" y="151" width="170" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="gTu-oD-L3D"/>
@@ -353,7 +353,21 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZI-e9-Kab">
-                                <rect key="frame" x="20" y="407" width="46" height="21"/>
+                                <rect key="frame" x="20" y="359" width="46" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JBK-uM-Eqd">
+                                <rect key="frame" x="20" y="189" width="374" height="150"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="7Ut-VM-lGL"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slv-ig-07Z">
+                                <rect key="frame" x="121" y="359" width="0.0" height="0.0"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -363,27 +377,41 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ynf-Zp-SPS" firstAttribute="top" secondItem="dZI-e9-Kab" secondAttribute="bottom" constant="3" id="Sfb-hg-iD7"/>
+                            <constraint firstItem="ynf-Zp-SPS" firstAttribute="top" secondItem="slv-ig-07Z" secondAttribute="bottom" constant="8" id="85Y-qc-END"/>
+                            <constraint firstItem="JBK-uM-Eqd" firstAttribute="top" secondItem="HNJ-Ng-Wdz" secondAttribute="bottom" constant="8" id="Afx-Hp-jV0"/>
+                            <constraint firstItem="JBK-uM-Eqd" firstAttribute="trailing" secondItem="Qur-2h-vdI" secondAttribute="trailingMargin" id="QWg-PI-eg0"/>
                             <constraint firstItem="HNJ-Ng-Wdz" firstAttribute="top" secondItem="8Jd-JR-prI" secondAttribute="bottom" constant="8" id="WAA-Bu-8aX"/>
-                            <constraint firstItem="bUZ-Da-rTh" firstAttribute="top" secondItem="Qar-QF-u1Z" secondAttribute="bottom" constant="56" id="Wvv-Os-Iuh"/>
-                            <constraint firstItem="8Jd-JR-prI" firstAttribute="top" secondItem="Qar-QF-u1Z" secondAttribute="bottom" constant="52" id="aYs-J5-LNF"/>
+                            <constraint firstItem="bUZ-Da-rTh" firstAttribute="top" secondItem="Qar-QF-u1Z" secondAttribute="bottom" constant="26" id="Wvv-Os-Iuh"/>
+                            <constraint firstItem="dZI-e9-Kab" firstAttribute="top" secondItem="JBK-uM-Eqd" secondAttribute="bottom" constant="8" id="Ylo-Kj-Ls1"/>
+                            <constraint firstItem="8Jd-JR-prI" firstAttribute="top" secondItem="Qar-QF-u1Z" secondAttribute="bottom" constant="22" id="aYs-J5-LNF"/>
+                            <constraint firstItem="sRE-e4-x7g" firstAttribute="top" secondItem="ynf-Zp-SPS" secondAttribute="bottom" constant="8" id="adk-0W-YPs"/>
+                            <constraint firstItem="slv-ig-07Z" firstAttribute="top" secondItem="JBK-uM-Eqd" secondAttribute="bottom" constant="20" id="bKe-Uk-l9q"/>
                             <constraint firstItem="nAZ-IM-wc9" firstAttribute="leading" secondItem="Qur-2h-vdI" secondAttribute="leadingMargin" id="ccI-j3-pcM"/>
+                            <constraint firstItem="JBK-uM-Eqd" firstAttribute="leading" secondItem="Qur-2h-vdI" secondAttribute="leadingMargin" id="dVk-xd-YUg"/>
                             <constraint firstItem="nAZ-IM-wc9" firstAttribute="top" secondItem="bUZ-Da-rTh" secondAttribute="bottom" constant="16" id="da3-QC-QjF"/>
-                            <constraint firstItem="sRE-e4-x7g" firstAttribute="top" secondItem="ynf-Zp-SPS" secondAttribute="bottom" id="iOF-5m-827"/>
                             <constraint firstItem="ynf-Zp-SPS" firstAttribute="trailing" secondItem="Qur-2h-vdI" secondAttribute="trailingMargin" id="nbq-nk-cfW"/>
+                            <constraint firstItem="ynf-Zp-SPS" firstAttribute="top" secondItem="dZI-e9-Kab" secondAttribute="bottom" constant="8" id="rfP-f8-PRl"/>
                             <constraint firstItem="ynf-Zp-SPS" firstAttribute="leading" secondItem="Qur-2h-vdI" secondAttribute="leadingMargin" id="xqf-km-rOF"/>
                             <constraint firstItem="bUZ-Da-rTh" firstAttribute="leading" secondItem="Qur-2h-vdI" secondAttribute="leadingMargin" id="z54-ed-v6z"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="6hW-I1-uHJ">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="SJW-NT-yMT">
-                            <connections>
-                                <segue destination="RPE-vB-1Al" kind="unwind" identifier="unwindToDetailViewSegue" unwindAction="unwindFromEditViewController:" id="qGm-SQ-Jgx"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="save" id="SJW-NT-yMT">
+                                <connections>
+                                    <segue destination="RPE-vB-1Al" kind="unwind" identifier="unwindToDetailViewSegue" unwindAction="unwindFromEditViewController:" id="qGm-SQ-Jgx"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="camera" id="Owk-CX-auX">
+                                <connections>
+                                    <action selector="takeImage:" destination="AsP-Cv-cqG" id="kXy-dm-hof"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="deviceImageView" destination="JBK-uM-Eqd" id="yAf-bM-Jod"/>
                         <outlet property="textFieldIpAddress" destination="HNJ-Ng-Wdz" id="jWF-Uo-2Zo"/>
                         <outlet property="textFieldName" destination="8Jd-JR-prI" id="4QG-W6-LMC"/>
                         <outlet property="textViewNotes" destination="ynf-Zp-SPS" id="k63-HL-v79"/>

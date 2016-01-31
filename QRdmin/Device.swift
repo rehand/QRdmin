@@ -7,18 +7,25 @@
 //
 
 import Foundation
+import UIKit
 
 class Device : NSObject {
     let id: String
     var name: String
     var ip: String
     var notes: String
+    var image: String?
     
-    init(id: String, name: String, ip: String, notes: String) {
+    convenience init(id: String, name: String, ip: String, notes: String) {
+        self.init(id: id, name: name, ip: ip, notes: notes, image: nil)
+    }
+    
+    init(id: String, name: String, ip: String, notes: String, image: String?) {
         self.id = id
         self.name = name
         self.ip = ip
         self.notes = notes
+        self.image = image
     }
     
     init(dict: NSDictionary) {
@@ -26,6 +33,7 @@ class Device : NSObject {
         self.name = dict.objectForKey("name") as! String
         self.ip = dict.objectForKey("ip") as! String
         self.notes = dict.objectForKey("notes") as! String
+        self.image = dict.objectForKey("image") as? String
     }
     
     func toDictionary() -> NSDictionary {
@@ -35,8 +43,21 @@ class Device : NSObject {
         dict["name"] = name
         dict["ip"] = ip
         dict["notes"] = notes
+        dict["image"] = image
         
         return NSDictionary(dictionary: dict)
+    }
+    
+    func getUIImage() -> UIImage? {
+        if (self.image != nil) {
+            let decodedData = NSData(base64EncodedString: self.image!, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
+            
+            if (decodedData != nil) {
+                return UIImage(data: decodedData!) as UIImage?
+            }
+        }
+        
+        return nil
     }
 
     override  var description: String {

@@ -15,17 +15,19 @@ class Device : NSObject {
     var ip: String
     var notes: String
     var image: String?
+    var favorite: String?
     
     convenience init(id: String, name: String, ip: String, notes: String) {
-        self.init(id: id, name: name, ip: ip, notes: notes, image: nil)
+        self.init(id: id, name: name, ip: ip, notes: notes, image: nil, favorite: "false")
     }
     
-    init(id: String, name: String, ip: String, notes: String, image: String?) {
+    init(id: String, name: String, ip: String, notes: String, image: String?, favorite: String) {
         self.id = id
         self.name = name
         self.ip = ip
         self.notes = notes
         self.image = image
+        self.favorite = favorite
     }
     
     init(dict: NSDictionary) {
@@ -34,6 +36,7 @@ class Device : NSObject {
         self.ip = dict.objectForKey("ip") as! String
         self.notes = dict.objectForKey("notes") as! String
         self.image = dict.objectForKey("image") as? String
+        self.favorite = dict.objectForKey("favorite") as? String
     }
     
     func toDictionary() -> NSDictionary {
@@ -44,6 +47,7 @@ class Device : NSObject {
         dict["ip"] = ip
         dict["notes"] = notes
         dict["image"] = image
+        dict["favorite"] = favorite
         
         return NSDictionary(dictionary: dict)
     }

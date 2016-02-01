@@ -267,6 +267,17 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Favorite" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWw-sw-Iex">
+                                <rect key="frame" x="20" y="148" width="82" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="z2b-tS-4lm">
+                                <rect key="frame" x="110" y="143" width="51" height="31"/>
+                                <animations/>
+                            </switch>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -301,6 +312,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="deviceImageView" destination="A0d-J5-Jwr" id="cFK-3m-67r"/>
+                        <outlet property="favoriteSwitch" destination="z2b-tS-4lm" id="Oie-d5-EOo"/>
                         <outlet property="textFieldIpAddress" destination="9xZ-rD-Zwq" id="Cip-IL-5Yh"/>
                         <outlet property="textFieldName" destination="6QP-r9-HOJ" id="uZi-QF-zc6"/>
                         <outlet property="textViewNotes" destination="XMW-3Y-O5r" id="jod-NE-14Z"/>
@@ -323,7 +335,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="IP Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAZ-IM-wc9">
-                                <rect key="frame" x="20" y="154" width="82" height="21"/>
+                                <rect key="frame" x="20" y="126" width="82" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -347,7 +359,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HNJ-Ng-Wdz">
-                                <rect key="frame" x="128" y="151" width="170" height="30"/>
+                                <rect key="frame" x="128" y="122" width="170" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="gTu-oD-L3D"/>
@@ -379,12 +391,26 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JBK-uM-Eqd">
-                                <rect key="frame" x="20" y="189" width="374" height="150"/>
+                                <rect key="frame" x="20" y="194" width="374" height="150"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="7Ut-VM-lGL"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Favorite" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIk-Yb-ZMR">
+                                <rect key="frame" x="20" y="160" width="82" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FFJ-5J-QKm">
+                                <rect key="frame" x="128" y="155" width="51" height="31"/>
+                                <animations/>
+                                <connections>
+                                    <action selector="changeFavorite:" destination="AsP-Cv-cqG" eventType="valueChanged" id="baZ-ky-enc"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -424,6 +450,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="deviceImageView" destination="JBK-uM-Eqd" id="yAf-bM-Jod"/>
+                        <outlet property="favoriteSwitch" destination="FFJ-5J-QKm" id="Obq-WI-wl8"/>
                         <outlet property="textFieldIpAddress" destination="HNJ-Ng-Wdz" id="jWF-Uo-2Zo"/>
                         <outlet property="textFieldName" destination="8Jd-JR-prI" id="4QG-W6-LMC"/>
                         <outlet property="textViewNotes" destination="ynf-Zp-SPS" id="k63-HL-v79"/>

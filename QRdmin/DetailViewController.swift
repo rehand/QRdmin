@@ -17,6 +17,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var textFieldIpAddress: UITextField!
     @IBOutlet weak var textViewNotes: UITextView!
     @IBOutlet weak var deviceImageView: UIImageView!
+    @IBOutlet weak var favoriteSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +58,10 @@ class DetailViewController: UIViewController {
         textViewNotes.text = device?.notes
         
         deviceImageView.image = device?.getUIImage()
+        
+        if device?.favorite == "true" {
+            favoriteSwitch.setOn(true, animated: true)
+        }
     }
     
     func saveToHistory() {

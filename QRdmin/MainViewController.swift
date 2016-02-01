@@ -30,7 +30,7 @@ class MainViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
             }
         }*/
         
-        /*client.save(Device(id: "123", name: "My Device", ip: "192.168.0.1", notes: "It's awesome")) {
+        /*client.save(Device(id: "test", name: "tMy Device", ip: "192.168.0.1", notes: "It's awesome", image: "asd", favorite: "true")) {
             (error) -> Void in
             print(error)
         }*/

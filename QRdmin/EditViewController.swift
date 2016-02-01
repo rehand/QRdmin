@@ -17,6 +17,27 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var textFieldIpAddress: UITextField!
     @IBOutlet weak var textViewNotes: UITextView!
     @IBOutlet weak var deviceImageView: UIImageView!
+    @IBOutlet weak var favoriteSwitch: UISwitch!
+    
+    @IBAction func changeFavorite(sender: UISwitch) {
+        let client = DeviceServerClient()
+        
+        if favoriteSwitch.on {
+            print("ON")
+            device?.favorite = "true"
+            client.save(device!) {
+                (error) -> Void in
+                print(error)
+            }
+        } else {
+            print("OFF")
+            device?.favorite = "false"
+            client.save(device!) {
+                (error) -> Void in
+                print(error)
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +66,10 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 device?.image = imageData!.base64EncodedStringWithOptions(.EncodingEndLineWithLineFeed)
             } else {
                 device?.image = nil
+            }
+            
+            if device?.favorite == "true" {
+                favoriteSwitch.setOn(true, animated: true)
             }
             
             if (device != nil) {

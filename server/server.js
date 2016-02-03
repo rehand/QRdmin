@@ -10,6 +10,10 @@ app.use(bodyParser.urlencoded({limit: '20mb', extended: true}));
 
 app.put('/device/:id', function (request, response) {
     db.serialize(function () {
+        var delStmt = db.prepare("DELETE FROM devices WHERE id = ?");
+        delStmt.run([request.params.id]);
+        delStmt.finalize();
+
         var stmt = db.prepare("INSERT INTO devices VALUES (?,?)");
         stmt.run([request.params.id, JSON.stringify(request.body)]);
         stmt.finalize();

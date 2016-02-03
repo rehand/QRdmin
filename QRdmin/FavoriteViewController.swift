@@ -40,6 +40,34 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         return cell!
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        NSLog(devicesToDisplay[indexPath.row].description)
+        goToDetailView(devicesToDisplay[indexPath.row])
+    }
+    
+    func goToDetailView(device: Device){
+        let client = DeviceServerClient()
+        
+        client.retrieve(device.id){
+            (data, error) -> Void in
+            if error != nil {
+                print(error)
+            } else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.performSegueWithIdentifier("favoriteToDetailSegue", sender: data)
+                })
+            }
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "favoriteToDetailSegue" {
+            let detailViewController = segue.destinationViewController as! DetailViewController
+            detailViewController.device = sender as? Device
+        }
+    }
+
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -99,6 +99,7 @@
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="favoritesTableView" destination="PcG-Q6-HIc" id="wVm-Yt-qlf"/>
+                        <segue destination="MBa-HT-IQs" kind="show" identifier="favoriteToDetailSegue" id="fci-68-Muy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -536,6 +537,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="V5J-BS-5Qv"/>
+        <segue reference="fci-68-Muy"/>
     </inferredMetricsTieBreakers>
 </document>

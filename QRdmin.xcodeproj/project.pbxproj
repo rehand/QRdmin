@@ -18,6 +18,8 @@
 		208D079B1C09D7E8004A93E5 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208D079A1C09D7E8004A93E5 /* HistoryViewController.swift */; };
 		208D079D1C09D9AF004A93E5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208D079C1C09D9AF004A93E5 /* DetailViewController.swift */; };
 		9C0317DF1C44451D005094B7 /* DeviceServerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0317DE1C44451D005094B7 /* DeviceServerClient.swift */; };
+		9C3965761C6294E600855E38 /* DeviceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3965751C6294E600855E38 /* DeviceTest.swift */; settings = {ASSET_TAGS = (); }; };
+		9C3965771C6295EF00855E38 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70699A91C4938A80007B23C /* Device.swift */; settings = {ASSET_TAGS = (); }; };
 		9C53134A1C4EA6AC00156DE9 /* QRdmin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9C5313481C4EA6AC00156DE9 /* QRdmin.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
 		B70699AA1C4938A80007B23C /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70699A91C4938A80007B23C /* Device.swift */; };
 		B70699AC1C4A6D050007B23C /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70699AB1C4A6D050007B23C /* EditViewController.swift */; };
@@ -27,6 +29,16 @@
 		B7C5D4B31C53E926001AFF03 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C5D4B21C53E926001AFF03 /* SimplePing.m */; settings = {ASSET_TAGS = (); }; };
 		B7C5D4B51C53F3EE001AFF03 /* Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C5D4B41C53F3EE001AFF03 /* Ping.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9C3965701C62947600855E38 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 200C79461BD67A8E00C4706D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 200C794D1BD67A8F00C4706D;
+			remoteInfo = QRdmin;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		200C794E1BD67A8F00C4706D /* QRdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,6 +54,9 @@
 		208D079A1C09D7E8004A93E5 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		208D079C1C09D9AF004A93E5 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9C0317DE1C44451D005094B7 /* DeviceServerClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceServerClient.swift; sourceTree = "<group>"; };
+		9C39656B1C62947600855E38 /* QRdminTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QRdminTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C39656F1C62947600855E38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9C3965751C6294E600855E38 /* DeviceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceTest.swift; sourceTree = "<group>"; };
 		9C5313491C4EA6AC00156DE9 /* QRdmin.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QRdmin.xcdatamodel; sourceTree = "<group>"; };
 		B70699A91C4938A80007B23C /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		B70699AB1C4A6D050007B23C /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +77,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9C3965681C62947600855E38 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -69,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				200C79501BD67A8F00C4706D /* QRdmin */,
+				9C39656C1C62947600855E38 /* QRdminTests */,
 				200C794F1BD67A8F00C4706D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -77,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				200C794E1BD67A8F00C4706D /* QRdmin.app */,
+				9C39656B1C62947600855E38 /* QRdminTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -106,6 +130,15 @@
 				B7C5D4B41C53F3EE001AFF03 /* Ping.swift */,
 			);
 			path = QRdmin;
+			sourceTree = "<group>";
+		};
+		9C39656C1C62947600855E38 /* QRdminTests */ = {
+			isa = PBXGroup;
+			children = (
+				9C39656F1C62947600855E38 /* Info.plist */,
+				9C3965751C6294E600855E38 /* DeviceTest.swift */,
+			);
+			path = QRdminTests;
 			sourceTree = "<group>";
 		};
 		B7577E021C5CF21E005EEBDF /* PingAnimation */ = {
@@ -138,6 +171,24 @@
 			productReference = 200C794E1BD67A8F00C4706D /* QRdmin.app */;
 			productType = "com.apple.product-type.application";
 		};
+		9C39656A1C62947600855E38 /* QRdminTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9C3965721C62947600855E38 /* Build configuration list for PBXNativeTarget "QRdminTests" */;
+			buildPhases = (
+				9C3965671C62947600855E38 /* Sources */,
+				9C3965681C62947600855E38 /* Frameworks */,
+				9C3965691C62947600855E38 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9C3965711C62947600855E38 /* PBXTargetDependency */,
+			);
+			name = QRdminTests;
+			productName = QRdminTests;
+			productReference = 9C39656B1C62947600855E38 /* QRdminTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -151,6 +202,10 @@
 					200C794D1BD67A8F00C4706D = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = FHJ6QDMKMG;
+					};
+					9C39656A1C62947600855E38 = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = 200C794D1BD67A8F00C4706D;
 					};
 				};
 			};
@@ -168,6 +223,7 @@
 			projectRoot = "";
 			targets = (
 				200C794D1BD67A8F00C4706D /* QRdmin */,
+				9C39656A1C62947600855E38 /* QRdminTests */,
 			);
 		};
 /* End PBXProject section */
@@ -181,6 +237,13 @@
 				200C795E1BD67A8F00C4706D /* LaunchScreen.storyboard in Resources */,
 				200C795B1BD67A8F00C4706D /* Assets.xcassets in Resources */,
 				200C79591BD67A8F00C4706D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C3965691C62947600855E38 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,7 +272,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9C3965671C62947600855E38 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C3965771C6295EF00855E38 /* Device.swift in Sources */,
+				9C3965761C6294E600855E38 /* DeviceTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9C3965711C62947600855E38 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 200C794D1BD67A8F00C4706D /* QRdmin */;
+			targetProxy = 9C3965701C62947600855E38 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		200C79571BD67A8F00C4706D /* Main.storyboard */ = {
@@ -319,6 +399,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = QRdmin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = at.fhj.nativemobileapps.QRdmin;
@@ -336,12 +417,37 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = QRdmin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = at.fhj.nativemobileapps.QRdmin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "QRdmin/QRdmin-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		9C3965731C62947600855E38 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = QRdminTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = qrdmina.QRdminTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QRdmin.app/QRdmin";
+			};
+			name = Debug;
+		};
+		9C3965741C62947600855E38 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = QRdminTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = qrdmina.QRdminTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QRdmin.app/QRdmin";
 			};
 			name = Release;
 		};
@@ -365,6 +471,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		9C3965721C62947600855E38 /* Build configuration list for PBXNativeTarget "QRdminTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C3965731C62947600855E38 /* Debug */,
+				9C3965741C62947600855E38 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 

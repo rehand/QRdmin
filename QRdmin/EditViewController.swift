@@ -21,17 +21,24 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBAction func changeFavorite(sender: UISwitch) {
         let client = DeviceServerClient()
+        let repo = DeviceRepository()
         
         if favoriteSwitch.on {
             print("ON")
             device?.favorite = "true"
+            
             client.save(device!) {
                 (error) -> Void in
                 print(error)
             }
+            
+            repo.saveDevice(device!, isFavorite: true)
         } else {
             print("OFF")
             device?.favorite = "false"
+            
+            repo.saveDevice(device!, isFavorite: false)
+            
             client.save(device!) {
                 (error) -> Void in
                 print(error)

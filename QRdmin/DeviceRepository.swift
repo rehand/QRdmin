@@ -16,7 +16,7 @@ class DeviceRepository {
     let ENTITY_NAME_DEVICE = "Device"
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
-    func saveDevice(device: Device, isFavorite: Bool?) {
+    func saveDevice(device: Device, isFavorite: Bool) {
         let entity =  NSEntityDescription.entityForName(ENTITY_NAME_DEVICE,
             inManagedObjectContext:managedObjectContext)
         
@@ -26,8 +26,10 @@ class DeviceRepository {
         deviceEntity.setValue(device.notes, forKey: "comments")
         deviceEntity.setValue(device.ip, forKey: "ipAddress")
         deviceEntity.setValue(NSDate(), forKey: "lastScanned")
-        if((isFavorite) != nil){
+        if isFavorite {
             deviceEntity.setValue(true, forKey: "isFavorite")
+        } else {
+            deviceEntity.setValue(false, forKey: "isFavorite")
         }
         
         do {
@@ -57,33 +59,25 @@ class DeviceRepository {
         }
     }
     
-    
-    func getFavoriteDevices() -> [String] {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-
-        let managedContext = appDelegate.managedObjectContext
-
+    func retrieveAllFavoriteDevices() -> [Device]{
         let fetchRequest = NSFetchRequest(entityName: ENTITY_NAME_DEVICE)
         
-        let predicate = NSPredicate(format: "isFavorite IS true")
-            
-            fetchRequest.predicate = predicate
-
         do {
-            let results = try managedContext.executeFetchRequest(fetchRequest)
+            let results = try managedObjectContext.executeFetchRequest(fetchRequest)
             let managedResults = results as! [NSManagedObject]
             
-            var resultList = [String]()
+            var resultList = [Device]()
             for res: NSManagedObject in managedResults {
-                resultList.append(String(res.valueForKey("id")))
+                if res.valueForKey("isFavorite") as! Bool == true {
+                    resultList.append(Device(id: res.valueForKey("id") as! String, name: res.valueForKey("name") as! String, ip: res.valueForKey("ipAddress") as! String, notes: res.valueForKey("comments") as! String))
+                }
             }
             
             return resultList
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
-            return [String]()
+            return [Device]()
         }
-        
     }
     
     func addDeviceToSearchIndex(device : Device) {

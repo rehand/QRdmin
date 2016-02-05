@@ -20,29 +20,10 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var favoriteSwitch: UISwitch!
     
     @IBAction func changeFavorite(sender: UISwitch) {
-        let client = DeviceServerClient()
-        let repo = DeviceRepository()
-        
         if favoriteSwitch.on {
-            print("ON")
             device?.favorite = "true"
-            
-            client.save(device!) {
-                (error) -> Void in
-                print(error)
-            }
-            
-            repo.saveDevice(device!, isFavorite: true)
         } else {
-            print("OFF")
             device?.favorite = "false"
-            
-            repo.saveDevice(device!, isFavorite: false)
-            
-            client.save(device!) {
-                (error) -> Void in
-                print(error)
-            }
         }
     }
     
@@ -53,6 +34,7 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         textFieldIpAddress.text = device?.ip
         textViewNotes.text = device?.notes
         deviceImageView.image = device?.getUIImage()
+        favoriteSwitch.setOn(device?.favorite == "true", animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -75,16 +57,15 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 device?.image = nil
             }
             
-            if device?.favorite == "true" {
-                favoriteSwitch.setOn(true, animated: true)
-            }
-            
             if (device != nil) {
                 let client = DeviceServerClient()
                 client.save(device!) {
                     (error) -> Void in
                     NSLog("Save: " + error!)
                 }
+                
+                let repo = DeviceRepository()
+                repo.saveDevice(device!, isFavorite: device?.favorite == "true")
             }
         }
     }

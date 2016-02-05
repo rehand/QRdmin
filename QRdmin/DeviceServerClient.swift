@@ -13,7 +13,7 @@ class DeviceServerClient {
     var SERVER_IP = "10.0.0.6"
     var SERVER_PORT = "3333"
     
-    func retrieve(id: NSString, callback: (Device, String?) -> Void){
+    func retrieve(id: NSString, callback: (Device?, String?) -> Void){
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(NSMutableURLRequest(URL: NSURL(string: "http://\(SERVER_IP):\(SERVER_PORT)/device/\(id)")!)) {
             (data, response, error) -> Void in
@@ -24,11 +24,10 @@ class DeviceServerClient {
                 
                 do {
                     anyObj = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(rawValue: 0))
-                    
                     callback(Device(dict: (anyObj)! as! NSDictionary), nil)
                 } catch {
                     print("Error occurred during json parse")
-                    anyObj = nil
+                    callback(nil, "error parsing JSON")
                 }
             }
         }

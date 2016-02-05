@@ -29,14 +29,6 @@ class MainViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "tmpShowDetailViewSegue" {
-            let detailViewController = segue.destinationViewController as! DetailViewController
-            
-            detailViewController.device = Device(id: "test3", name: "DeviceName/Title3", ip: "8.8.8.8", notes: "this is the notes section. Here you are able to add a description, add changes, etc. You can also use it as an history of done changes.")
-        }
-    }
-    
     //Callback if QR code was detected
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
         

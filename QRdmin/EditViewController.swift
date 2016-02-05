@@ -73,7 +73,7 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBAction func takeImage(sender: AnyObject) {
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.sourceType = .PhotoLibrary
+        imagePicker.sourceType = .Camera
         
         presentViewController(imagePicker, animated: true, completion: nil)
     }

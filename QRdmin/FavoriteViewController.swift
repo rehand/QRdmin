@@ -16,17 +16,27 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         favoritesTableView.delegate = self
+        
+        self.reloadData()
+        self.favoritesTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.favoritesTableView.reloadData()
+    }
+    
+    private func reloadData() {
+        devicesToDisplay = [Device]()
         
         let allDevices = DeviceRepository().retrieveAllFavoriteDevices()
         for singleDevice: Device in allDevices {
             devicesToDisplay.append(singleDevice)
         }
-        
-        self.favoritesTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
+
         self.favoritesTableView.reloadData()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.reloadData()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

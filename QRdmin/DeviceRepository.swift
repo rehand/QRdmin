@@ -37,6 +37,10 @@ class DeviceRepository {
         } catch let error as NSError  {
             print("Could not save \(error), \(error.userInfo)")
         }
+        
+        if isFavorite {
+            addDeviceToSearchIndex(device)
+        }
     }
     
     func retrieveAllSavedDevices() -> [Device]{
@@ -91,7 +95,7 @@ class DeviceRepository {
             if let error = error {
                 NSLog("Indexing error: \(error.localizedDescription)")
             } else {
-                NSLog("Search item indexed successfully!")
+                NSLog("Added device with ID \(device.id) and name \(device.name) to search index successfully!")
             }
         }
     }

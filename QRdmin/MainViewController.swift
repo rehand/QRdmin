@@ -78,10 +78,7 @@ class MainViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
             print("\(error.localizedDescription)")
         }
         
-        NSLog("trying to add device to search index")
-        
-        // Temporary add test device to Spotlight Index
-        DeviceRepository().addDeviceToSearchIndex(Device(id: "1234", name: "Test Device", ip: "127.0.0.1", notes: "Here it is"))
+        addFavoriteDevicesToSearchIndex()
     }
     
     override func didReceiveMemoryWarning() {
@@ -121,6 +118,15 @@ class MainViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
                     //TODO: further process deviceID
                 }
             }
+        }
+    }
+    
+    func addFavoriteDevicesToSearchIndex() {
+        let repo = DeviceRepository()
+        let favoriteDevices = repo.retrieveAllFavoriteDevices()
+        
+        for favoriteDevice: Device in favoriteDevices {
+            repo.addDeviceToSearchIndex(favoriteDevice)
         }
     }
 }

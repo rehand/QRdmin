@@ -53,7 +53,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         client.retrieve(deviceId){
             (device, error) -> Void in
             if error != nil {
-                print(error)
+                dispatch_async(dispatch_get_main_queue(), {
+                    let creationViewController : CreationViewController = mainStoryboard.instantiateViewControllerWithIdentifier("CreationViewController") as! CreationViewController
+                    creationViewController.deviceId = deviceId
+                    self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+                    self.window?.rootViewController = creationViewController
+                    self.window?.makeKeyAndVisible()
+                })
             } else {
                 dispatch_async(dispatch_get_main_queue(), {
                     let detailViewController : DetailViewController = mainStoryboard.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController

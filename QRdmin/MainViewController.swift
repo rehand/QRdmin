@@ -55,6 +55,39 @@ class MainViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
         }
     }
     
+    func callDeviceByUrl(url: String) {
+        let URL_PREFIX : String = "qrdmin://"
+        
+        var deviceId = url
+        if (url.rangeOfString(URL_PREFIX) != nil) {
+            deviceId = url.substringFromIndex(deviceId.startIndex.advancedBy(URL_PREFIX.characters.count))
+        }
+        
+        let client = DeviceServerClient()
+        client.retrieve(deviceId){
+            (device, error) -> Void in
+            if (device == nil || error != nil) {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.performSegueWithIdentifier("showCreationViewSegue", sender: deviceId as! AnyObject)
+                })
+            } else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.performSegueWithIdentifier("showDetailViewSegue", sender: device as! AnyObject)
+                })
+            }
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showDetailViewSegue" {
+            let editViewController = segue.destinationViewController as! EditViewController
+            editViewController.device = sender as! Device
+        } else if segue.identifier == "showCreationViewSegue" {
+            let creationViewController = segue.destinationViewController as! CreationViewController
+            creationViewController.deviceId = sender as! String
+        }
+    }
+    
     func addFavoriteDevicesToSearchIndex() {
         let repo = DeviceRepository()
         let favoriteDevices = repo.retrieveAllFavoriteDevices()

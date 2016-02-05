@@ -9,7 +9,15 @@
 import UIKit
 
 class CreationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
+    var deviceId : String?
+    
+    @IBOutlet weak var textFieldName: UITextField!
+    @IBOutlet weak var textFieldIpAddress: UITextField!
+    @IBOutlet weak var textViewNotes: UITextView!
+    @IBOutlet weak var deviceImageView: UIImageView!
+    @IBOutlet weak var favoriteSwitch: UISwitch!
+    
     var imagePicker : UIImagePickerController!
     
     override func viewDidLoad() {
@@ -24,27 +32,51 @@ class CreationViewController: UIViewController, UIImagePickerControllerDelegate,
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func takePicture(sender: AnyObject) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "createDeviceSegue" {
+            let device = Device(id: deviceId!,
+                                name: textFieldName.text!,
+                ip: textFieldIpAddress.text!,
+                notes: textViewNotes.text)
+            
+            if deviceImageView.image != nil {
+                //Now use image to create into NSData format
+                let imageData = UIImagePNGRepresentation(deviceImageView.image!)
+                device.image = imageData!.base64EncodedStringWithOptions(.EncodingEndLineWithLineFeed)
+            } else {
+                device.image = nil
+            }
+            
+            if (favoriteSwitch.on) {
+                device.favorite = "true"
+            } else {
+                device.favorite = "false"
+            }
+            
+            if (deviceId != nil) {
+                let client = DeviceServerClient()
+                client.save(device) {
+                    (error) -> Void in
+                    NSLog("Save: " + error!)
+                }
+                
+                let repo = DeviceRepository()
+                repo.saveDevice(device, isFavorite: device.favorite == "true")
+            }
+        }
+    }
+    
+    @IBAction func takeImage(sender: AnyObject) {
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.sourceType = .Camera
+        imagePicker.sourceType = .PhotoLibrary
         
         presentViewController(imagePicker, animated: true, completion: nil)
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         imagePicker.dismissViewControllerAnimated(true, completion: nil)
-        imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        deviceImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

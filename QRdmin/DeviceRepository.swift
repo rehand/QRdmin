@@ -17,6 +17,12 @@ class DeviceRepository {
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     func saveDevice(device: Device, isFavorite: Bool) {
+        for existingObject in fetchDeviceNSManagedObjects()! {
+            if existingObject.valueForKey("id") as! String == device.id {
+                deleteDevice(existingObject)
+            }
+        }
+        
         let entity =  NSEntityDescription.entityForName(ENTITY_NAME_DEVICE,
             inManagedObjectContext:managedObjectContext)
         
@@ -44,22 +50,34 @@ class DeviceRepository {
     }
     
     func retrieveAllSavedDevices() -> [Device]{
+        var resultList = [Device]()
+        for res: NSManagedObject in fetchDeviceNSManagedObjects()! {
+            let retrievedDevice = Device(id: res.valueForKey("id") as! String, name: res.valueForKey("name") as! String, ip: res.valueForKey("ipAddress") as! String, notes: res.valueForKey("comments") as! String)
+            resultList.append(retrievedDevice)
+        }
+        
+        return resultList
+    }
+    
+    private func fetchDeviceNSManagedObjects() -> [NSManagedObject]? {
         let fetchRequest = NSFetchRequest(entityName: ENTITY_NAME_DEVICE)
         
         do {
             let results = try managedObjectContext.executeFetchRequest(fetchRequest)
-            let managedResults = results as! [NSManagedObject]
-            
-            var resultList = [Device]()
-            for res: NSManagedObject in managedResults {
-                let retrievedDevice = Device(id: res.valueForKey("id") as! String, name: res.valueForKey("name") as! String, ip: res.valueForKey("ipAddress") as! String, notes: res.valueForKey("comments") as! String)
-                resultList.append(retrievedDevice)
-            }
-            
-            return resultList
+            return results as? [NSManagedObject]
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
-            return [Device]()
+            return nil
+        }
+    }
+    
+    func deleteDevice(device: NSManagedObject) {
+        managedObjectContext.deleteObject(device)
+        
+        do {
+            try managedObjectContext.save()
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
         }
     }
     

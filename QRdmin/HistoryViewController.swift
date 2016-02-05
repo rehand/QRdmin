@@ -19,16 +19,26 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         tableOutlet.delegate = self
         
         title = "The List"
+        self.reloadData()
+        tableOutlet.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        
+        self.tableOutlet.reloadData()
+    }
+    
+    private func reloadData() {
+        devicesToDisplay = [Device]()
         
         let allDevices = DeviceRepository().retrieveAllSavedDevices()
         for singleDevice: Device in allDevices {
             devicesToDisplay.append(singleDevice)
         }
         
-        tableOutlet.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        // Do any additional setup after loading the view, typically from a nib.
-        
         self.tableOutlet.reloadData()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.reloadData()
     }
     
     override func didReceiveMemoryWarning() {

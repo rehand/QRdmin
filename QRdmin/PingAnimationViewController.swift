@@ -36,7 +36,7 @@ class PingAnimationViewController: UIViewController {
         
         if device != nil {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
-                Ping(hostNameOrIpAddress: device!.ip) {
+                Ping(hostNameOrIpAddress: self.device!.ip) {
                     (success) -> Void in
                     NSLog("Pinging " + self.device!.ip + ", success: " + success.description)
                     

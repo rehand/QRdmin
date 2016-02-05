@@ -80,7 +80,7 @@ class MainViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetailViewSegue" {
-            let editViewController = segue.destinationViewController as! EditViewController
+            let editViewController = segue.destinationViewController as! DetailViewController
             editViewController.device = sender as! Device
         } else if segue.identifier == "showCreationViewSegue" {
             let creationViewController = segue.destinationViewController as! CreationViewController

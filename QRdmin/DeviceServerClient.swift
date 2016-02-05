@@ -10,7 +10,7 @@ import Foundation
 
 class DeviceServerClient {
     
-    var SERVER_IP = "10.1.0.3"
+    var SERVER_IP = "10.0.0.6"
     var SERVER_PORT = "3333"
     
     func retrieve(id: NSString, callback: (Device, String?) -> Void){
@@ -24,12 +24,12 @@ class DeviceServerClient {
                 
                 do {
                     anyObj = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(rawValue: 0))
+                    
+                    callback(Device(dict: (anyObj)! as! NSDictionary), nil)
                 } catch {
                     print("Error occurred during json parse")
                     anyObj = nil
                 }
-
-                callback(Device(dict: (anyObj)! as! NSDictionary), nil)
             }
         }
         task.resume()

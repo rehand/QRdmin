@@ -49,7 +49,7 @@ class MainViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
             if metadataObj.stringValue != nil {
                 if(metadataObj.stringValue.rangeOfString("qrdmin://") != nil) {
                     print(metadataObj.stringValue)
-                    //TODO: further process deviceID
+                    callDeviceByUrl(metadataObj.stringValue)
                 }
             }
         }

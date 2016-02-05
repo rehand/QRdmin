@@ -16,6 +16,8 @@ class MainViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
     var videoPreviewLayer:AVCaptureVideoPreviewLayer?
     var qrCodeFrameView:UIView?
     
+    var isAlreadyCaptured:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -31,25 +33,28 @@ class MainViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
     
     //Callback if QR code was detected
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
-        
         // Check if the metadataObjects array is not nil and it contains at least one object.
         if metadataObjects == nil || metadataObjects.count == 0 {
             qrCodeFrameView?.frame = CGRectZero
             return
         }
         
-        // Get the metadata object.
-        let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
-        
-        if metadataObj.type == AVMetadataObjectTypeQRCode {
-            // If the found metadata is equal to the QR code metadata then update the status label's text and set the bounds
-            let barCodeObject = videoPreviewLayer?.transformedMetadataObjectForMetadataObject(metadataObj as AVMetadataMachineReadableCodeObject) as! AVMetadataMachineReadableCodeObject
-            qrCodeFrameView?.frame = barCodeObject.bounds;
+        if(!isAlreadyCaptured) {
+            isAlreadyCaptured = true
             
-            if metadataObj.stringValue != nil {
-                if(metadataObj.stringValue.rangeOfString("qrdmin://") != nil) {
-                    print(metadataObj.stringValue)
-                    callDeviceByUrl(metadataObj.stringValue)
+            // Get the metadata object.
+            let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
+            
+            if metadataObj.type == AVMetadataObjectTypeQRCode {
+                // If the found metadata is equal to the QR code metadata then update the status label's text and set the bounds
+                let barCodeObject = videoPreviewLayer?.transformedMetadataObjectForMetadataObject(metadataObj as AVMetadataMachineReadableCodeObject) as! AVMetadataMachineReadableCodeObject
+                qrCodeFrameView?.frame = barCodeObject.bounds;
+                
+                if metadataObj.stringValue != nil {
+                    if(metadataObj.stringValue.rangeOfString("qrdmin://") != nil) {
+                        print(metadataObj.stringValue)
+                        callDeviceByUrl(metadataObj.stringValue)
+                    }
                 }
             }
         }
@@ -140,5 +145,10 @@ class MainViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
             // If any error occurs, simply log the description of it and don't continue any more.
             print("\(error.localizedDescription)")
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.isAlreadyCaptured = false
     }
 }

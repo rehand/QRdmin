@@ -5,8 +5,8 @@ var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database(':memory:');
 
 var app = express();
-app.use(bodyParser.json({limit: '20mb'}));
-app.use(bodyParser.urlencoded({limit: '20mb', extended: true}));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 app.put('/device/:id', function (request, response) {
     db.serialize(function () {

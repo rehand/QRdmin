@@ -23,20 +23,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
         NSLog("URL received \(url)")
-        
-        callDetailViewWithUrl(url.host!)
-        
+        callViewWithUrl(url.host!)
         return true
     }
     
     func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
         if userActivity.activityType == CSSearchableItemActionType {
             if let uniqueIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String {
-                
                 NSLog("Deep link: \(uniqueIdentifier)")
-                
-                callDetailViewWithUrl(uniqueIdentifier)
-                
+                callViewWithUrl(uniqueIdentifier)
                 return true
             }
         }
@@ -44,18 +39,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return false
     }
     
-    func callDetailViewWithUrl(url: String) {
+    func callViewWithUrl(url: String) {
+        let URL_PREFIX : String = "qrdmin://"
+        
+        var deviceId = url
+        if (url.rangeOfString(URL_PREFIX) != nil) {
+            deviceId = url.substringFromIndex(deviceId.startIndex.advancedBy(URL_PREFIX.characters.count))
+        }
+        
         let mainStoryboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let detailViewController : DetailViewController = mainStoryboard.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
         
-        // TODO fetch device from server and call create (if no device found) or detail view
-        
-        detailViewController.device = Device(id: "test", name: "name", ip: "ip", notes: "notes")
-        
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.rootViewController = detailViewController
-        self.window?.makeKeyAndVisible()
+        let client = DeviceServerClient()
+        client.retrieve(deviceId){
+            (device, error) -> Void in
+            if error != nil {
+                print(error)
+            } else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    let detailViewController : DetailViewController = mainStoryboard.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
+                    detailViewController.device = device
+                    self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+                    self.window?.rootViewController = detailViewController
+                    self.window?.makeKeyAndVisible()
+                })
+            }
+        }
     }
+            
+            
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

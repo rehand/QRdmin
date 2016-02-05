@@ -14,6 +14,7 @@ class DeviceServerClient {
     var SERVER_PORT = "3333"
     
     func retrieve(id: NSString, callback: (Device?, String?) -> Void){
+        NSLog("trying to retrieve device with id \(id)")
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(NSMutableURLRequest(URL: NSURL(string: "http://\(SERVER_IP):\(SERVER_PORT)/device/\(id)")!)) {
             (data, response, error) -> Void in

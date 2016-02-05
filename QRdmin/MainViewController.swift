@@ -47,8 +47,7 @@ class MainViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
             qrCodeFrameView?.frame = barCodeObject.bounds;
             
             if metadataObj.stringValue != nil {
-                if(metadataObj.stringValue.rangeOfString("qrdmin://") != nil)
-                {
+                if(metadataObj.stringValue.rangeOfString("qrdmin://") != nil) {
                     print(metadataObj.stringValue)
                     //TODO: further process deviceID
                 }

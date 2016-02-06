@@ -55,6 +55,9 @@ class MainViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
                         print(metadataObj.stringValue)
                         callDeviceByUrl(metadataObj.stringValue)
                     }
+                    else {
+                        isAlreadyCaptured = false;
+                    }
                 }
             }
         }

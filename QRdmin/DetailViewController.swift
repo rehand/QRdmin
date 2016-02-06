@@ -23,11 +23,13 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        for var i = 0 ; i < self.navigationController!.viewControllers.count ; i++
-        {
-            if(self.navigationController!.viewControllers[i] is CreationViewController)
+        if(self.navigationController != nil) {
+            for var i = 0 ; i < self.navigationController!.viewControllers.count ; i++
             {
-                self.navigationController!.viewControllers.removeAtIndex(i)
+                if(self.navigationController!.viewControllers[i] is CreationViewController)
+                {
+                    self.navigationController!.viewControllers.removeAtIndex(i)
+                }
             }
         }
         

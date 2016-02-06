@@ -19,15 +19,15 @@ class CreationViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var deviceImageView: UIImageView!
     @IBOutlet weak var textViewNotes: UITextView!
     @IBOutlet weak var createFavoriteSwitch: UISwitch!
+    @IBOutlet weak var imageView: UIImageView!
     
     var imagePicker : UIImagePickerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollView.contentSize = CGSizeMake(300, 800)
+        scrollView.contentSize = CGSizeMake(300, 1000)
         // Do any additional setup after loading the view.
     }
-    @IBOutlet weak var imageView: UIImageView!
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

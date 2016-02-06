@@ -13,13 +13,16 @@ class DeviceServerClient {
     var SERVER_IP = "192.168.1.115"
     var SERVER_PORT = "3333"
     
+    // timeout for requests in seconds 
+    var REQUEST_TIMEOUT = 10.0
+    
     func retrieve(id: NSString, callback: (Device?, String?) -> Void){
         NSLog("trying to retrieve device with id \(id)")
         let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithRequest(NSMutableURLRequest(URL: NSURL(string: "http://\(SERVER_IP):\(SERVER_PORT)/device/\(id)")!)) {
+        let task = session.dataTaskWithRequest(NSMutableURLRequest(URL: NSURL(string: "http://\(SERVER_IP):\(SERVER_PORT)/device/\(id)")!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringCacheData, timeoutInterval: NSTimeInterval(REQUEST_TIMEOUT))) {
             (data, response, error) -> Void in
             if error != nil {
-                callback(Device(dict: NSDictionary()), error?.localizedDescription)
+                callback(nil, error?.localizedDescription)
             } else {
                 let anyObj: AnyObject?
                 
@@ -38,7 +41,7 @@ class DeviceServerClient {
     func save(device: Device, callback: (String?) -> Void) {
         let session = NSURLSession.sharedSession()
         
-        let request = NSMutableURLRequest(URL: NSURL(string:"http://\(SERVER_IP):\(SERVER_PORT)/device/\(device.id)")!)
+        let request = NSMutableURLRequest(URL: NSURL(string:"http://\(SERVER_IP):\(SERVER_PORT)/device/\(device.id)")!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringCacheData, timeoutInterval: NSTimeInterval(REQUEST_TIMEOUT))
         request.HTTPMethod = "PUT"
         request.addValue("application/json", forHTTPHeaderField: "Content-type")
         

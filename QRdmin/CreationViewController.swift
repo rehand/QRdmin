@@ -44,7 +44,7 @@ class CreationViewController: UIViewController, UIImagePickerControllerDelegate,
             
             if deviceImageView.image != nil {
                 //Now use image to create into NSData format
-                let imageData = UIImagePNGRepresentation(deviceImageView.image!)
+                let imageData = UIImageJPEGRepresentation(deviceImageView.image!, 0.2)
                 device.image = imageData!.base64EncodedStringWithOptions(.EncodingEndLineWithLineFeed)
             } else {
                 device.image = nil

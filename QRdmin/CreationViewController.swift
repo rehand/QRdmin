@@ -10,19 +10,21 @@ import UIKit
 
 class CreationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+
     var deviceId : String?
     
+    @IBOutlet var scrollView: UIScrollView!
     @IBOutlet weak var textFieldName: UITextField!
     @IBOutlet weak var textFieldIpAddress: UITextField!
-    @IBOutlet weak var textViewNotes: UITextView!
     @IBOutlet weak var deviceImageView: UIImageView!
-    @IBOutlet weak var favoriteSwitch: UISwitch!
+    @IBOutlet weak var textViewNotes: UITextView!
+    @IBOutlet weak var createFavoriteSwitch: UISwitch!
     
     var imagePicker : UIImagePickerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        scrollView.contentSize = CGSizeMake(300, 800)
         // Do any additional setup after loading the view.
     }
     @IBOutlet weak var imageView: UIImageView!
@@ -48,7 +50,7 @@ class CreationViewController: UIViewController, UIImagePickerControllerDelegate,
                 device.image = nil
             }
             
-            if (favoriteSwitch.on) {
+            if (createFavoriteSwitch.on) {
                 device.favorite = "true"
             } else {
                 device.favorite = "false"
@@ -64,6 +66,9 @@ class CreationViewController: UIViewController, UIImagePickerControllerDelegate,
                 let repo = DeviceRepository()
                 repo.saveDevice(device, isFavorite: device.favorite == "true")
             }
+            
+            let detailViewController = segue.destinationViewController as! DetailViewController
+            detailViewController.device = device
         }
     }
     

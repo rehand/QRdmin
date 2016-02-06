@@ -10,7 +10,7 @@ import Foundation
 
 class DeviceServerClient {
     
-    var SERVER_IP = "192.168.1.115"
+    var SERVER_IP = "10.55.200.192"
     var SERVER_PORT = "3333"
     
     // timeout for requests in seconds 

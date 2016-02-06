@@ -8,6 +8,7 @@
 
 import UIKit
 
+// this class handles the favorite list of devices
 class FavoriteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var favoritesTableView: UITableView!

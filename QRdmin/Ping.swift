@@ -8,6 +8,7 @@
 
 import Foundation
 
+// this class provides ping functionality
 class Ping : NSObject, SimplePingDelegate {
     let PING_TIMEOUT_SECONDS = 10.0
     let PING_COUNT = 5

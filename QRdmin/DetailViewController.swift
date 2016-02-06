@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+// this class shows details for a device
 class DetailViewController: UIViewController {
     
     var device : Device?

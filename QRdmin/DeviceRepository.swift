@@ -12,6 +12,7 @@ import CoreData
 import CoreSpotlight
 import MobileCoreServices
 
+// this class acts as repository for devices
 class DeviceRepository {
     let ENTITY_NAME_DEVICE = "Device"
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext

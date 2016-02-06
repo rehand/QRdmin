@@ -12,12 +12,13 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     var device : Device?
     
     var imagePicker : UIImagePickerController!
-    
+
+    @IBOutlet var scrollView: UIScrollView!
     @IBOutlet weak var textFieldName: UITextField!
     @IBOutlet weak var textFieldIpAddress: UITextField!
     @IBOutlet weak var textViewNotes: UITextView!
-    @IBOutlet weak var deviceImageView: UIImageView!
     @IBOutlet weak var favoriteSwitch: UISwitch!
+    @IBOutlet weak var deviceImageView: UIImageView!
     
     @IBAction func changeFavorite(sender: UISwitch) {
         if favoriteSwitch.on {
@@ -29,6 +30,8 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        scrollView.contentSize = CGSizeMake(300, 1000)
         
         textFieldName.text = device?.name
         textFieldIpAddress.text = device?.ip

@@ -316,6 +316,9 @@
                             </textField>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dVV-1e-uWd">
                                 <rect key="frame" x="142" y="186" width="51" height="31"/>
+                                <connections>
+                                    <action selector="changeFavorite:" destination="AsP-Cv-cqG" eventType="valueChanged" id="4LC-OK-DwS"/>
+                                </connections>
                             </switch>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Additional Notes:" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Lfe-zv-7lh">
                                 <rect key="frame" x="20" y="613" width="374" height="296"/>

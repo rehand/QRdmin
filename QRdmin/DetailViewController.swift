@@ -74,7 +74,7 @@ class DetailViewController: UIViewController {
     
     func saveToHistory() {
         let repository = DeviceRepository()
-        repository.saveDevice(device!, isFavorite: false)
+        repository.saveDevice(device!, isFavorite: device?.favorite == "true")
     }
     
 }

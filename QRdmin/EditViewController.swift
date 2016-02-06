@@ -8,6 +8,7 @@
 
 import UIKit
 
+// this class handles the modification of a device
 class EditViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var device : Device?
     

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// this class represents the entity for a Device
 class Device : NSObject {
     let id: String
     var name: String

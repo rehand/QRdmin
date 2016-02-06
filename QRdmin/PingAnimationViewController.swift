@@ -9,6 +9,7 @@
 import UIKit
 import SpriteKit
 
+// this class handles the ping animation
 class PingAnimationViewController: UIViewController {
     
     @IBOutlet weak var pingAnimationView: SKView!

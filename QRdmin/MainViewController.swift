@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 
+// this class is the main view controller and includes QR code scanning
 class MainViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
     //Local variables for QR Reader

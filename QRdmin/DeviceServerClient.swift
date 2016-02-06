@@ -8,12 +8,13 @@
 
 import Foundation
 
+// this class handles the webservice calls
 class DeviceServerClient {
     
-    var SERVER_IP = "192.168.1.115"
+    var SERVER_IP = "10.0.0.6"
     var SERVER_PORT = "3333"
     
-    // timeout for requests in seconds 
+    // timeout for requests in seconds
     var REQUEST_TIMEOUT = 10.0
     
     func retrieve(id: NSString, callback: (Device?, String?) -> Void){

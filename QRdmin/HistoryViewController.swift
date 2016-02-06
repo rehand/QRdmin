@@ -8,6 +8,7 @@
 
 import UIKit
 
+// this class handles the history list of devices
 class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableOutlet: UITableView!

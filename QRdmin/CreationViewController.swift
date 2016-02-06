@@ -8,6 +8,7 @@
 
 import UIKit
 
+// this class handles the creation of a new device
 class CreationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
 

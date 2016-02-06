@@ -34,7 +34,7 @@ class GameScene: SKScene {
         }
 
         myLabel.fontSize = 85
-        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame) - CGRectGetMidY(self.frame) / 2 * 3)
+        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame) - CGRectGetMidY(self.frame) / 2 * 2)
         
         self.addChild(myLabel)
     }

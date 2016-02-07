@@ -11,11 +11,18 @@ import Foundation
 // this class handles the webservice calls
 class DeviceServerClient {
     
-    var SERVER_IP = "10.55.200.192"
-    var SERVER_PORT = "3333"
+    var SERVER_IP = ""
+    var SERVER_PORT = ""
     
     // timeout for requests in seconds
     var REQUEST_TIMEOUT = 10.0
+ 
+    init() {
+        if let path = NSBundle.mainBundle().pathForResource("Info", ofType: "plist"), dict = NSDictionary(contentsOfFile: path) {
+            SERVER_IP = dict.valueForKey("ServerIP") as! String
+            SERVER_PORT = dict.valueForKey("ServerPort") as! String
+        }
+    }
     
     func retrieve(id: NSString, callback: (Device?, String?) -> Void){
         NSLog("trying to retrieve device with id \(id)")

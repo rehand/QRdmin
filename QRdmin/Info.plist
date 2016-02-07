@@ -16,6 +16,10 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>ServerIP</key>
+	<string>10.55.200.192</string>
+	<key>ServerPort</key>
+	<string>3333</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
